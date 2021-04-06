@@ -1,0 +1,14 @@
+nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+li {
+  width: 25vw;
+  list-style: none;
+  padding: 1em;
+  text-align: center;
+  background-color: #2d6895;
+  color: #fff;
+  border-radius: 10px;
+}
