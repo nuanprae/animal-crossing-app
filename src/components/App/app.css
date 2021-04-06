@@ -3,3 +3,8 @@
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 1em;
 }
+footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 1em;
+}
