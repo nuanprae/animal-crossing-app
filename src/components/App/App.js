@@ -9,7 +9,13 @@ import './app.css';
 const App = () => {
   return (
     <div>
-      <Header />
+      <Header
+        location={'Sydney'}
+        image={'http://res.cloudinary.com/dk7wue4rl/image/upload/v1502188386/sunny_xmwsvi.svg'}
+        alt={'clear'}
+        date={'03 March'}
+        time={'14:30'}
+      />
       <TextBlock text={'Currently Available'} />
       <Nav />
       <section className="item-cards-container">

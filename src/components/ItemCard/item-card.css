@@ -1,14 +1,14 @@
-figure {
+.item-card {
   display: flex;
   flex-direction: column;
   border: solid 1px grey;
 }
 
-img {
+.item-card img {
   background-color: #fff;
 }
 
-figcaption {
+.item-card figcaption {
   background-color: #9cd2df;
   text-align: center;
   white-space: nowrap;

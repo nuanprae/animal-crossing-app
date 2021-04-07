@@ -1,7 +1,21 @@
-header {
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
   background-color: #a8d8a8;
-  padding: 2em;
+  padding: 1em;
 }
-h2 {
+.header h2 {
   text-align: center;
+}
+.sub-header {
+  display: flex;
+  gap: 0.5em;
+  justify-content: space-around;
+  background-color: #a8d8a8;
+  align-items: center;
+}
+
+.sub-header img {
+  width: 5vw;
 }

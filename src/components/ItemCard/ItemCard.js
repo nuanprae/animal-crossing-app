@@ -4,7 +4,7 @@ import './item-card.css';
 
 const ItemCard = (props) => {
   return (
-    <figure>
+    <figure className="item-card">
       <img src={props.image} alt="" />
       <figcaption>{props.name}</figcaption>
     </figure>
