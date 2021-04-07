@@ -4,3 +4,8 @@
   padding: 0.5em;
   border-style: none;
 }
+select {
+  background-color: #fff;
+  border-radius: 8px;
+  color: #6b5c43;
+}

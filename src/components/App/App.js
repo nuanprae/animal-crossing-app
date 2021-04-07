@@ -1,4 +1,5 @@
 import Header from '../Header/Header';
+import TextBlock from '../TextBlock/TextBlock';
 import Nav from '../Nav/Nav';
 import ItemCard from '../ItemCard/ItemCard';
 import DropdownButton from '../DropdownButton/DropdownButton';
@@ -9,6 +10,7 @@ const App = () => {
   return (
     <div>
       <Header />
+      <TextBlock text={'Currently Available'} />
       <Nav />
       <section className="item-cards-container">
         <ItemCard image={'https://acnhapi.com/v1/icons/fish/1'} name={'bitterling'} />
