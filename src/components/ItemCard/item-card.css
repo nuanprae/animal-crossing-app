@@ -1,6 +1,7 @@
 .item-card {
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
   border: solid 1px grey;
 }
 
@@ -12,5 +13,5 @@
   background-color: #9cd2df;
   text-align: center;
   white-space: nowrap;
-  padding: 1em;
+  padding: 1em 0.5em;
 }
