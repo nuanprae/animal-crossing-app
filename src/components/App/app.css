@@ -1,10 +1,18 @@
-.item-cards-container {
+.main {
+  margin: 2em;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 1em;
+  grid-template-columns: max-content 2fr;
+  grid-template-rows: max-content;
+  gap: 2em;
 }
-footer {
-  display: flex;
-  justify-content: space-between;
+.nav {
+  grid-column: 1/2;
+  grid-row: 1;
+}
+.item-cards-container {
+  grid-column: 2/3;
+  grid-row: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(128px, 1fr));
   gap: 1em;
 }

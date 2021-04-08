@@ -1,8 +1,8 @@
 import './nav.css';
 
-const Nav = () => {
+const Nav = (props) => {
   return (
-    <nav>
+    <nav className={`nav ${props.className}`}>
       <li>Fish</li>
       <li>Sea Creatures</li>
       <li>Bugs</li>

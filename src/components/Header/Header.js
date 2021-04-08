@@ -2,7 +2,7 @@ import './header.css';
 
 const Header = (props) => {
   return (
-    <header className="header">
+    <header className={`header ${props.className}`}>
       <h2>Animal Crossing Daily Report</h2>
       <section className="sub-header">
         <h4>{props.location}</h4>
