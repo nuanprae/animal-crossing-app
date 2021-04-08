@@ -4266,8 +4266,14 @@ const rawData = {
 
 const results = Object.values(rawData); // [{...}, {...}, {...}]
 
-const dailyResults = results.filter((obj) => obj.availability['month-array-northern'].includes(3));
-console.log(dailyResults);
+const date = new Date();
+const monthNumber = date.getMonth() + 1;
+const monthName = date.toLocaleString('default', { month: 'long' });
+const dayNumber = date.toLocaleDateString('default', { day: '2-digit' });
+
+const dailyResults = results.filter((obj) =>
+  obj.availability['month-array-northern'].includes(monthNumber),
+);
 
 const listItems = dailyResults.map((item) => (
   <ItemCard key={item['file-name']} image={item.icon_uri} name={item.name['name-EUen']}></ItemCard>
@@ -4281,7 +4287,7 @@ const App = () => {
         location={'Sydney'}
         image={'http://res.cloudinary.com/dk7wue4rl/image/upload/v1502188386/sunny_xmwsvi.svg'}
         alt={'clear'}
-        date={'03 March'}
+        date={`${dayNumber} ${monthName}`}
         time={'14:30'}
       />
       <main className="main">
