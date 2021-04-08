@@ -4,7 +4,24 @@ import ItemCard from '../ItemCard/ItemCard';
 
 import './app.css';
 
-const rawData = {
+const getWeatherData = () => {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition((position) => {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+      console.log(latitude, longitude);
+      const apiUrl = `https://fcc-weather-api.glitch.me/api/current?lat=${latitude}&lon=${longitude}`;
+      fetch(apiUrl)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+        });
+    });
+  }
+};
+
+getWeatherData();
+const rawAcnhData = {
   bitterling: {
     id: 1,
     'file-name': 'bitterling',
@@ -4263,19 +4280,62 @@ const rawData = {
     icon_uri: 'https://acnhapi.com/v1/icons/fish/80',
   },
 };
-
-const results = Object.values(rawData); // [{...}, {...}, {...}]
+const rawWeatherData = {
+  coord: {
+    lon: 151.2073,
+    lat: -33.8679,
+  },
+  weather: [
+    {
+      id: 800,
+      main: 'Clear',
+      description: 'clear sky',
+      icon: '01n',
+    },
+  ],
+  base: 'stations',
+  main: {
+    temp: 291.89,
+    feels_like: 292.07,
+    temp_min: 290.37,
+    temp_max: 292.59,
+    pressure: 1010,
+    humidity: 86,
+  },
+  visibility: 10000,
+  wind: {
+    speed: 1.79,
+    deg: 11,
+    gust: 4.02,
+  },
+  clouds: {
+    all: 2,
+  },
+  dt: 1617879945,
+  sys: {
+    type: 3,
+    id: 2004323,
+    country: 'AU',
+    sunrise: 1617826326,
+    sunset: 1617867701,
+  },
+  timezone: 36000,
+  id: 2147714,
+  name: 'Sydney',
+  cod: 200,
+};
+const acnhResults = Object.values(rawAcnhData); // [{...}, {...}, {...}]
 
 const date = new Date();
 const monthNumber = date.getMonth() + 1;
 const monthName = date.toLocaleString('default', { month: 'long' });
 const dayNumber = date.toLocaleDateString('default', { day: '2-digit' });
 
-const dailyResults = results.filter((obj) =>
+const dailyAcnhResults = acnhResults.filter((obj) =>
   obj.availability['month-array-northern'].includes(monthNumber),
 );
 
-const listItems = dailyResults.map((item) => (
+const listItems = dailyAcnhResults.map((item) => (
   <ItemCard key={item['file-name']} image={item.icon_uri} name={item.name['name-EUen']}></ItemCard>
 ));
 
@@ -4284,19 +4344,15 @@ const App = () => {
     <section className="fish-page">
       <Header
         className={'header'}
-        location={'Sydney'}
+        location={'city'}
         image={'http://res.cloudinary.com/dk7wue4rl/image/upload/v1502188386/sunny_xmwsvi.svg'}
-        alt={'clear'}
+        alt={''}
         date={`${dayNumber} ${monthName}`}
         time={'14:30'}
       />
       <main className="main">
         <Nav className={'nav'} />
-        <section className="item-cards-container">
-          {listItems}
-          {/* <ItemCard image={dailyResults[0].icon_uri} name={dailyResults[0].name['name-EUen']} />
-          <ItemCard image={dailyResults[1].icon_uri} name={dailyResults[1].name['name-EUen']} /> */}
-        </section>
+        <section className="item-cards-container">{listItems}</section>
       </main>
     </section>
   );
