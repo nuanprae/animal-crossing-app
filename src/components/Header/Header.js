@@ -1,11 +1,14 @@
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import './header.css';
 
 const Header = (props) => {
   return (
     <header className={`header ${props.className}`}>
-      <h2>Animal Crossing Daily Report</h2>
+      <Link to="/Home" className="home">
+        <h2>Animal Crossing Daily Report</h2>
+      </Link>
       <section className="sub-header">
         <h4>{props.location}</h4>
         <img src={props.image} alt={props.alt} />

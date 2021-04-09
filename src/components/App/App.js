@@ -1,6 +1,7 @@
 import Header from '../Header/Header';
 import Nav from '../Nav/Nav';
 import FishPage from '../FishPage/FishPage';
+import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 
 import './app.css';
 
@@ -65,18 +66,20 @@ const time = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', h
 
 const App = () => {
   return (
-    <section className="app">
-      <Header
-        className={'header'}
-        location={city}
-        image={weatherIcon}
-        alt={weatherDescription}
-        date={`${dayNumber} ${monthName}`}
-        time={time}
-      />
-      <Nav className={'nav'} />
-      <FishPage className={'fish-page'} />
-    </section>
+    <Router>
+      <section className="app">
+        <Header
+          className={'header'}
+          location={city}
+          image={weatherIcon}
+          alt={weatherDescription}
+          date={`${dayNumber} ${monthName}`}
+          time={time}
+        />
+        <Nav className={'nav'} />
+        <FishPage className={'fish-page'} />
+      </section>
+    </Router>
   );
 };
 

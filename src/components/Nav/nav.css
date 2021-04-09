@@ -3,8 +3,8 @@
   flex-direction: column;
   gap: 1em;
 }
-.nav li {
-  list-style: none;
+.link {
+  text-decoration: none;
   padding: 1em;
   text-align: center;
   background-color: #2d6895;
