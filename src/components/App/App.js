@@ -1,10 +1,11 @@
 import Header from '../Header/Header';
 import Nav from '../Nav/Nav';
-import FishPage from '../FishPage/FishPage';
+import Fish from '../Fish/Fish';
 import SeaCreatures from '../SeaCreatures/SeaCreatures';
 import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 
 import './app.css';
+import Bugs from '../Bugs/Bugs';
 
 // const getWeatherData = () => {
 //   if (navigator.geolocation) {
@@ -78,8 +79,13 @@ const App = () => {
           time={time}
         />
         <Nav className={'nav'} />
-        <FishPage className={'fish-page'} />
-        <SeaCreatures />
+        <section className="page">
+          <Switch>
+            <Route path="/Fish" component={Fish} />
+            <Route path="/SeaCreatures" component={SeaCreatures} />
+            <Route path="/Bugs" component={Bugs} />
+          </Switch>
+        </section>
       </section>
     </Router>
   );

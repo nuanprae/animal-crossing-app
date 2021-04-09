@@ -1,7 +1,7 @@
 import ItemCard from '../ItemCard/ItemCard';
 import DropdownButton from '../DropdownButton/DropdownButton';
 
-import './fish-page.css';
+import './fish.css';
 
 const rawAcnhData = {
   bitterling: {
@@ -4279,9 +4279,9 @@ const listItems = dailyAcnhResults.map((item) => (
 
 const fishLocations = [...new Set(dailyAcnhResults.map((obj) => obj.availability.location))];
 
-const FishPage = (props) => {
+const Fish = () => {
   return (
-    <main className={`page-container ${props.className}`}>
+    <main className="page-container">
       <section className="item-cards-container">{listItems}</section>
       <section className="sort">
         <DropdownButton label={'price'} options={['price', 'name']} />
@@ -4292,4 +4292,4 @@ const FishPage = (props) => {
   );
 };
 
-export default FishPage;
+export default Fish;

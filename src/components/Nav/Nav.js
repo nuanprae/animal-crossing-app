@@ -6,7 +6,7 @@ import './nav.css';
 const Nav = (props) => {
   return (
     <nav className={`nav ${props.className}`}>
-      <Link to="/FishPage" className="link">
+      <Link to="/Fish" className="link">
         Fish
       </Link>
       <Link to="/SeaCreatures" className="link">

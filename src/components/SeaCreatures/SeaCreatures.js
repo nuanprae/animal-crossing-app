@@ -2192,9 +2192,9 @@ const listItems = dailyAcnhResults.map((item) => (
 
 const speed = [...new Set(dailyAcnhResults.map((obj) => obj.speed))];
 
-const SeaCreatures = (props) => {
+const SeaCreatures = () => {
   return (
-    <main className={`page-container ${props.className}`}>
+    <main className="page-container">
       <section className="item-cards-container">{listItems}</section>
       <section className="sort">
         <DropdownButton label={'price'} options={['price', 'name']} />
