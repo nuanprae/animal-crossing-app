@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import './header.css';
 
 const Header = (props) => {
@@ -14,4 +16,12 @@ const Header = (props) => {
   );
 };
 
+Header.propTypes = {
+  className: PropTypes.string,
+  location: PropTypes.string,
+  image: PropTypes.string,
+  alt: PropTypes.string,
+  date: PropTypes.string,
+  time: PropTypes.string,
+};
 export default Header;

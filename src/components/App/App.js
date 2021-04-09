@@ -4329,7 +4329,12 @@ const dailyAcnhResults = acnhResults.filter((obj) =>
   obj.availability['month-array-northern'].includes(monthNumber),
 );
 const listItems = dailyAcnhResults.map((item) => (
-  <ItemCard key={item['file-name']} image={item.icon_uri} name={item.name['name-EUen']}></ItemCard>
+  <ItemCard
+    key={item['file-name']}
+    image={item.icon_uri}
+    alt={item.name['name-EUen']}
+    name={item.name['name-EUen']}
+  ></ItemCard>
 ));
 
 const fishLocations = [...new Set(dailyAcnhResults.map((obj) => obj.availability.location))];

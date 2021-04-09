@@ -20,6 +20,7 @@ const DropdownButton = (props) => {
 };
 
 DropdownButton.propTypes = {
+  className: PropTypes.string,
   options: PropTypes.array,
   label: PropTypes.string,
 };

@@ -7,6 +7,7 @@ const TextBlock = (props) => {
 };
 
 TextBlock.propTypes = {
+  className: PropTypes.string,
   text: PropTypes.string,
 };
 

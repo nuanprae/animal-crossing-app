@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import './nav.css';
 
 const Nav = (props) => {
@@ -11,4 +13,7 @@ const Nav = (props) => {
   );
 };
 
+Nav.propTypes = {
+  className: PropTypes.string,
+};
 export default Nav;
