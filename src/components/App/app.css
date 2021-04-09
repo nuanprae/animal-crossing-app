@@ -2,8 +2,15 @@
   margin: 2em;
   display: grid;
   grid-template-columns: max-content 2fr;
-  grid-template-rows: max-content;
+  grid-template-rows: max-content max-content;
   gap: 2em;
+}
+.sort {
+  grid-column: 2/3;
+  grid-row: 2;
+  display: flex;
+  gap: 1em;
+  justify-content: space-between;
 }
 .nav {
   grid-column: 1/2;

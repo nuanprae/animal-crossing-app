@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import './drop-down-button.css';
 
 const DropdownButton = (props) => {
@@ -8,13 +10,18 @@ const DropdownButton = (props) => {
     </option>
   ));
   return (
-    <section className="drop-down">
+    <section className={`drop-down ${props.className}`}>
       <label>{props.label}: </label>
       <select name={props.label} id={props.label}>
         {listOptions}
       </select>
     </section>
   );
+};
+
+DropdownButton.propTypes = {
+  options: PropTypes.array,
+  label: PropTypes.string,
 };
 
 export default DropdownButton;

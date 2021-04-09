@@ -1,6 +1,7 @@
 import Header from '../Header/Header';
 import Nav from '../Nav/Nav';
 import ItemCard from '../ItemCard/ItemCard';
+import DropdownButton from '../DropdownButton/DropdownButton';
 
 import './app.css';
 
@@ -59,7 +60,6 @@ const weatherIcon = rawWeatherData.weather[0].icon;
 const weatherDescription = rawWeatherData.weather[0].main;
 
 const date = new Date();
-console.log(date);
 const monthNumber = date.getMonth() + 1;
 const monthName = date.toLocaleString('default', { month: 'long' });
 const dayNumber = date.toLocaleDateString('default', { day: '2-digit' });
@@ -4332,6 +4332,8 @@ const listItems = dailyAcnhResults.map((item) => (
   <ItemCard key={item['file-name']} image={item.icon_uri} name={item.name['name-EUen']}></ItemCard>
 ));
 
+const fishLocations = [...new Set(dailyAcnhResults.map((obj) => obj.availability.location))];
+
 const App = () => {
   return (
     <section className="fish-page">
@@ -4346,6 +4348,11 @@ const App = () => {
       <main className="main">
         <Nav className={'nav'} />
         <section className="item-cards-container">{listItems}</section>
+        <section className="sort">
+          <DropdownButton label={'price'} options={['price', 'name']} />
+          <DropdownButton label={'location'} options={fishLocations} />
+          <DropdownButton label={'languages'} options={['English', 'German', 'French']} />
+        </section>
       </main>
     </section>
   );
