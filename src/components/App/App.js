@@ -4,23 +4,67 @@ import ItemCard from '../ItemCard/ItemCard';
 
 import './app.css';
 
-const getWeatherData = () => {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition((position) => {
-      const latitude = position.coords.latitude;
-      const longitude = position.coords.longitude;
-      console.log(latitude, longitude);
-      const apiUrl = `https://fcc-weather-api.glitch.me/api/current?lat=${latitude}&lon=${longitude}`;
-      fetch(apiUrl)
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
-        });
-    });
-  }
+// const getWeatherData = () => {
+//   if (navigator.geolocation) {
+//     navigator.geolocation.getCurrentPosition((position) => {
+//       const latitude = position.coords.latitude;
+//       const longitude = position.coords.longitude;
+//       console.log(latitude, longitude);
+//       const apiUrl = `https://fcc-weather-api.glitch.me/api/current?lat=${latitude}&lon=${longitude}`;
+//       fetch(apiUrl)
+//         .then((response) => response.json())
+//         .then((data) => {
+//           console.log(data);
+//         });
+//     });
+//   }
+// };
+
+// getWeatherData();
+const rawWeatherData = {
+  coord: {
+    lon: 13.4054,
+    lat: 55.5975,
+  },
+  weather: [
+    {
+      id: 803,
+      main: 'Clouds',
+      description: 'broken clouds',
+      icon: 'https://cdn.glitch.com/6e8889e5-7a72-48f0-a061-863548450de5%2F04d.png?1499366020964',
+    },
+  ],
+  base: 'stations',
+  main: {
+    temp: 6.07,
+    feels_like: 2,
+    temp_min: 5.56,
+    temp_max: 6.67,
+    pressure: 1014,
+    humidity: 45,
+  },
+  visibility: 10000,
+  wind: {},
+  clouds: {},
+  dt: 1617885232,
+  sys: {},
+  timezone: 7200,
+  id: 2712373,
+  name: 'Genarp',
+  cod: 200,
 };
 
-getWeatherData();
+const city = rawWeatherData.name;
+const weatherIcon = rawWeatherData.weather[0].icon;
+const weatherDescription = rawWeatherData.weather[0].main;
+
+const date = new Date();
+console.log(date);
+const monthNumber = date.getMonth() + 1;
+const monthName = date.toLocaleString('default', { month: 'long' });
+const dayNumber = date.toLocaleDateString('default', { day: '2-digit' });
+const time = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
+
 const rawAcnhData = {
   bitterling: {
     id: 1,
@@ -4280,61 +4324,10 @@ const rawAcnhData = {
     icon_uri: 'https://acnhapi.com/v1/icons/fish/80',
   },
 };
-const rawWeatherData = {
-  coord: {
-    lon: 151.2073,
-    lat: -33.8679,
-  },
-  weather: [
-    {
-      id: 800,
-      main: 'Clear',
-      description: 'clear sky',
-      icon: '01n',
-    },
-  ],
-  base: 'stations',
-  main: {
-    temp: 291.89,
-    feels_like: 292.07,
-    temp_min: 290.37,
-    temp_max: 292.59,
-    pressure: 1010,
-    humidity: 86,
-  },
-  visibility: 10000,
-  wind: {
-    speed: 1.79,
-    deg: 11,
-    gust: 4.02,
-  },
-  clouds: {
-    all: 2,
-  },
-  dt: 1617879945,
-  sys: {
-    type: 3,
-    id: 2004323,
-    country: 'AU',
-    sunrise: 1617826326,
-    sunset: 1617867701,
-  },
-  timezone: 36000,
-  id: 2147714,
-  name: 'Sydney',
-  cod: 200,
-};
 const acnhResults = Object.values(rawAcnhData); // [{...}, {...}, {...}]
-
-const date = new Date();
-const monthNumber = date.getMonth() + 1;
-const monthName = date.toLocaleString('default', { month: 'long' });
-const dayNumber = date.toLocaleDateString('default', { day: '2-digit' });
-
 const dailyAcnhResults = acnhResults.filter((obj) =>
   obj.availability['month-array-northern'].includes(monthNumber),
 );
-
 const listItems = dailyAcnhResults.map((item) => (
   <ItemCard key={item['file-name']} image={item.icon_uri} name={item.name['name-EUen']}></ItemCard>
 ));
@@ -4344,11 +4337,11 @@ const App = () => {
     <section className="fish-page">
       <Header
         className={'header'}
-        location={'city'}
-        image={'http://res.cloudinary.com/dk7wue4rl/image/upload/v1502188386/sunny_xmwsvi.svg'}
-        alt={''}
+        location={city}
+        image={weatherIcon}
+        alt={weatherDescription}
         date={`${dayNumber} ${monthName}`}
-        time={'14:30'}
+        time={time}
       />
       <main className="main">
         <Nav className={'nav'} />
