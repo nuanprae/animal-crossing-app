@@ -1,6 +1,7 @@
 import Header from '../Header/Header';
 import Nav from '../Nav/Nav';
 import FishPage from '../FishPage/FishPage';
+import SeaCreatures from '../SeaCreatures/SeaCreatures';
 import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 
 import './app.css';
@@ -78,6 +79,7 @@ const App = () => {
         />
         <Nav className={'nav'} />
         <FishPage className={'fish-page'} />
+        <SeaCreatures />
       </section>
     </Router>
   );

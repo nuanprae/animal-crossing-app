@@ -1,0 +1,15 @@
+.page-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.item-cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(128px, 1fr));
+  gap: 0.5em;
+}
+.sort {
+  display: flex;
+  gap: 1em;
+  justify-content: space-between;
+}
