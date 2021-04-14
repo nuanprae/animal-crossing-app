@@ -5,21 +5,20 @@
   background-color: #a8d8a8;
   padding: 1em;
 }
-.header h2 {
+.home-link {
   text-align: center;
+  text-decoration: none;
   color: #6b5c43;
+}
+.home-link:hover {
+  color: #2d6895;
 }
 .sub-header {
   display: flex;
   gap: 0.5em;
   justify-content: space-around;
-  background-color: #a8d8a8;
   align-items: center;
 }
-
 .sub-header img {
   width: 5vw;
-}
-.home {
-  text-decoration: none;
 }

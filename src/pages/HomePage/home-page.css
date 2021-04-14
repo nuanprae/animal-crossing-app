@@ -1,0 +1,13 @@
+.home-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
+}
+.item-cards {
+  display: flex;
+  gap: 2em;
+}
+.text-block {
+  justify-self: center;
+}

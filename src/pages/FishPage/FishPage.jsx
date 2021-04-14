@@ -1,7 +1,7 @@
-import ItemCardsGrid from '../ItemCardsGrid/ItemCardsGrid';
-import DropdownButton from '../DropdownButton/DropdownButton';
+import ItemCardsGrid from '../../components/ItemCardsGrid/ItemCardsGrid';
+import DropdownButton from '../../components/DropdownButton/DropdownButton';
 
-import './fish.css';
+import './fish-page.css';
 
 const rawAcnhData = {
   bitterling: {
@@ -4271,7 +4271,7 @@ const dailyAcnhResults = acnhResults.filter((obj) =>
 
 const fishLocations = [...new Set(dailyAcnhResults.map((obj) => obj.availability.location))];
 
-const Fish = () => {
+const FishPage = () => {
   return (
     <main className="page-container">
       <ItemCardsGrid data={dailyAcnhResults} />
@@ -4284,4 +4284,4 @@ const Fish = () => {
   );
 };
 
-export default Fish;
+export default FishPage;

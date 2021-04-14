@@ -1,20 +1,13 @@
 .app {
   display: grid;
-  grid-template-columns: max-content 1fr;
-  grid-template-rows: repeat(3, max-content);
+  grid-template-columns: 1fr;
+  grid-template-rows: max-content 2fr;
   gap: 1em;
 }
 .header {
-  grid-column: 1/3;
   grid-row: 1;
-}
-.nav {
-  margin: 1em;
-  grid-column: 1/2;
-  grid-row: 2;
 }
 .page {
   margin: 1em;
-  grid-column: 2/3;
   grid-row: 2;
 }
