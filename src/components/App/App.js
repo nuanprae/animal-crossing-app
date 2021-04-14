@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import Header from '../Header/Header';
 // import HomePage from '../../pages/HomePage/HomePage';
 // import FishPage from '../../pages/FishPage/FishPage';
@@ -13,9 +14,21 @@ const weatherDescription = utils.getWeatherDescription();
 
 const dayNumber = utils.getDayNumber();
 const monthName = utils.getMonthName();
-const time = utils.getTime();
+const timeAtLoad = utils.getTime();
 
 const App = () => {
+  const [currentTime, setCurrentTime] = useState(timeAtLoad);
+  useEffect(() => {
+    const intervalID = setInterval(() => {
+      setCurrentTime(utils.getTime());
+    }, 1000);
+    return () => {
+      clearInterval(intervalID);
+    };
+  });
+  console.log(timeAtLoad);
+  console.log(currentTime);
+
   return (
     <section className="app">
       <Header
@@ -24,7 +37,7 @@ const App = () => {
         image={weatherIcon}
         alt={weatherDescription}
         date={`${dayNumber} ${monthName}`}
-        time={time}
+        time={currentTime}
       />
       <section className="page">
         <SeaCreaturesPage />

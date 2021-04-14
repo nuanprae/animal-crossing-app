@@ -21,6 +21,6 @@ Header.propTypes = {
   image: PropTypes.string,
   alt: PropTypes.string,
   date: PropTypes.string,
-  time: PropTypes.string,
+  // time: PropTypes.string,
 };
 export default Header;
