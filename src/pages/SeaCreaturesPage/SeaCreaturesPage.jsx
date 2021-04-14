@@ -2179,7 +2179,7 @@ const rawSeaCreaturesData = {
 const dailySeaCreaturesResults = getDailyAcnhResults(rawSeaCreaturesData);
 const speed = [...new Set(dailySeaCreaturesResults.map((obj) => obj.speed))];
 
-const SeaCreatures = () => {
+const SeaCreaturesPage = () => {
   return (
     <main className="page-container">
       <ItemCardsGrid data={dailySeaCreaturesResults}/>
@@ -2192,4 +2192,4 @@ const SeaCreatures = () => {
   );
 };
 
-export default SeaCreatures;
+export default SeaCreaturesPage;

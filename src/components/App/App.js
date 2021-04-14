@@ -1,8 +1,8 @@
 import Header from '../Header/Header';
-import HomePage from '../../pages/HomePage/HomePage';
-import FishPage from '../../pages/FishPage/FishPage';
+// import HomePage from '../../pages/HomePage/HomePage';
+// import FishPage from '../../pages/FishPage/FishPage';
 import SeaCreaturesPage from '../../pages/SeaCreaturesPage/SeaCreaturesPage';
-import BugsPage from '../../pages/BugsPage/BugsPage';
+// import BugsPage from '../../pages/BugsPage/BugsPage';
 import * as utils from '../../utils';
 
 import './app.css';

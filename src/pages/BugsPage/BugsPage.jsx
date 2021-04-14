@@ -3716,7 +3716,7 @@ const dailyBugsResults = getDailyAcnhResults(rawBugsData);
 
 const rarity = [...new Set(dailyBugsResults.map((obj) => obj.availability.rarity))];
 
-const Bugs = () => {
+const BugsPage = () => {
   return (
     <main className="page-container">
       <ItemCardsGrid data={dailyBugsResults} />
@@ -3729,4 +3729,4 @@ const Bugs = () => {
   );
 };
 
-export default Bugs;
+export default BugsPage;
