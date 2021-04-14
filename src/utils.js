@@ -53,6 +53,11 @@ export const getMonthName = () => {
   return date.toLocaleString('default', { month: 'long' });
 };
 
+export const getMonthNumber = () => {
+  const date = new Date();
+  return date.getMonth() + 1;
+};
+
 export const getTime = () => {
   const date = new Date();
   return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
@@ -74,3 +79,9 @@ export const getTime = () => {
 //   }
 // };
 // getWeatherData();
+
+export const getDailyAcnhResults = (data) => {
+  const results = Object.values(data);
+  const monthNumber = getMonthNumber();
+  return results.filter((obj) => obj.availability['month-array-northern'].includes(monthNumber));
+};

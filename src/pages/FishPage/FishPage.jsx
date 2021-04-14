@@ -1,9 +1,10 @@
 import ItemCardsGrid from '../../components/ItemCardsGrid/ItemCardsGrid';
 import DropdownButton from '../../components/DropdownButton/DropdownButton';
+import { getDailyAcnhResults } from '../../utils';
 
 import './fish-page.css';
 
-const rawAcnhData = {
+const rawFishData = {
   bitterling: {
     id: 1,
     'file-name': 'bitterling',
@@ -4262,19 +4263,13 @@ const rawAcnhData = {
     icon_uri: 'https://acnhapi.com/v1/icons/fish/80',
   },
 };
-const acnhResults = Object.values(rawAcnhData); // [{...}, {...}, {...}]
-const date = new Date();
-const monthNumber = date.getMonth() + 1;
-const dailyAcnhResults = acnhResults.filter((obj) =>
-  obj.availability['month-array-northern'].includes(monthNumber),
-);
-
-const fishLocations = [...new Set(dailyAcnhResults.map((obj) => obj.availability.location))];
+const dailyFishResults = getDailyAcnhResults(rawFishData);
+const fishLocations = [...new Set(dailyFishResults.map((obj) => obj.availability.location))];
 
 const FishPage = () => {
   return (
     <main className="page-container">
-      <ItemCardsGrid data={dailyAcnhResults} />
+      <ItemCardsGrid data={dailyFishResults} />
       <section className="sort">
         <DropdownButton label={'price'} options={['price', 'name']} />
         <DropdownButton label={'location'} options={fishLocations} />

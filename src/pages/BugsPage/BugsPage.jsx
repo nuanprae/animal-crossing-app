@@ -1,9 +1,10 @@
-import ItemCard from '../ItemCard/ItemCard';
-import DropdownButton from '../DropdownButton/DropdownButton';
+import ItemCardsGrid from '../../components/ItemCardsGrid/ItemCardsGrid';
+import DropdownButton from '../../components/DropdownButton/DropdownButton';
+import { getDailyAcnhResults } from '../../utils';
 
-import './bugs.css';
+import './bugs-page.css';
 
-const rawAcnhData = {
+const rawBugsData = {
   common_butterfly: {
     id: 1,
     'file-name': 'common_butterfly',
@@ -3711,27 +3712,14 @@ const rawAcnhData = {
     icon_uri: 'https://acnhapi.com/v1/icons/bugs/80',
   },
 };
-const acnhResults = Object.values(rawAcnhData); // [{...}, {...}, {...}]
-const date = new Date();
-const monthNumber = date.getMonth() + 1;
-const dailyAcnhResults = acnhResults.filter((obj) =>
-  obj.availability['month-array-northern'].includes(monthNumber),
-);
-const listItems = dailyAcnhResults.map((item) => (
-  <ItemCard
-    key={item['file-name']}
-    image={item.icon_uri}
-    alt={item.name['name-EUen']}
-    name={item.name['name-EUen']}
-  ></ItemCard>
-));
+const dailyBugsResults = getDailyAcnhResults(rawBugsData);
 
-const rarity = [...new Set(dailyAcnhResults.map((obj) => obj.availability.rarity))];
+const rarity = [...new Set(dailyBugsResults.map((obj) => obj.availability.rarity))];
 
 const Bugs = () => {
   return (
     <main className="page-container">
-      <section className="item-cards-container">{listItems}</section>
+      <ItemCardsGrid data={dailyBugsResults} />
       <section className="sort">
         <DropdownButton label={'price'} options={['price', 'name']} />
         <DropdownButton label={'location'} options={rarity} />

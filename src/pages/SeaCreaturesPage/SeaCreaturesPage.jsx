@@ -1,9 +1,10 @@
-import ItemCard from '../ItemCard/ItemCard';
-import DropdownButton from '../DropdownButton/DropdownButton';
+import ItemCardsGrid from '../../components/ItemCardsGrid/ItemCardsGrid';
+import DropdownButton from '../../components/DropdownButton/DropdownButton';
+import { getDailyAcnhResults } from '../../utils';
 
-import './sea-creatures.css';
+import './sea-creatures-page.css';
 
-const rawAcnhData = {
+const rawSeaCreaturesData = {
   seaweed: {
     id: 1,
     'file-name': 'seaweed',
@@ -2175,27 +2176,13 @@ const rawAcnhData = {
       "The Venus' flower basket looks like an otherworldly creature one would find on an alien planet. But it is instead a remarkable sea sponge found in the deepest parts of the ocean. Its body is composed of silica and looks like a sculpture or, perhaps, a vase made of glassy mesh. I daresay Venus' flower basket is one of nature's most impressive works of art.",
   },
 };
-const acnhResults = Object.values(rawAcnhData); // [{...}, {...}, {...}]
-const date = new Date();
-const monthNumber = date.getMonth() + 1;
-const dailyAcnhResults = acnhResults.filter((obj) =>
-  obj.availability['month-array-northern'].includes(monthNumber),
-);
-const listItems = dailyAcnhResults.map((item) => (
-  <ItemCard
-    key={item['file-name']}
-    image={item.icon_uri}
-    alt={item.name['name-EUen']}
-    name={item.name['name-EUen']}
-  ></ItemCard>
-));
-
-const speed = [...new Set(dailyAcnhResults.map((obj) => obj.speed))];
+const dailySeaCreaturesResults = getDailyAcnhResults(rawSeaCreaturesData);
+const speed = [...new Set(dailySeaCreaturesResults.map((obj) => obj.speed))];
 
 const SeaCreatures = () => {
   return (
     <main className="page-container">
-      <section className="item-cards-container">{listItems}</section>
+      <ItemCardsGrid data={dailySeaCreaturesResults}/>
       <section className="sort">
         <DropdownButton label={'price'} options={['price', 'name']} />
         <DropdownButton label={'location'} options={speed} />
