@@ -3,6 +3,7 @@
   grid-template-columns: 1fr;
   grid-template-rows: max-content 2fr;
   gap: 1em;
+  background-color: #e9f4eb;
 }
 .header {
   grid-row: 1;

@@ -5,13 +5,10 @@
   background-color: #a8d8a8;
   padding: 1em;
 }
-.home-link {
+.header-text {
   text-align: center;
   text-decoration: none;
   color: #6b5c43;
-}
-.home-link:hover {
-  color: #2d6895;
 }
 .sub-header {
   display: flex;

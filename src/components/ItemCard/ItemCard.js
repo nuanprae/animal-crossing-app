@@ -5,8 +5,8 @@ import './item-card.css';
 const ItemCard = (props) => {
   return (
     <figure className="item-card">
-      <img src={props.image} alt={props.alt} />
-      <figcaption>{props.name}</figcaption>
+      <img className="item-card-image" src={props.image} alt={props.alt} />
+      <figcaption className="item-card-caption">{props.name}</figcaption>
     </figure>
   );
 };

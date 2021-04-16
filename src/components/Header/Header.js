@@ -4,7 +4,7 @@ import './header.css';
 const Header = (props) => {
   return (
     <header className={`header ${props.className}`}>
-      <h2>Animal Crossing Daily Report</h2>
+      <h2 className="header-text">Animal Crossing Daily Report</h2>
       <section className="sub-header">
         <h4>{props.location}</h4>
         <img src={props.image} alt={props.alt} />
