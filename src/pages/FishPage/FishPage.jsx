@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 import ItemCardsGrid from '../../components/ItemCardsGrid/ItemCardsGrid';
 import DropdownButton from '../../components/DropdownButton/DropdownButton';
 import { getDailyAcnhResults } from '../../utils';
@@ -10,12 +11,17 @@ const FishPage = () => {
   const [fishLocations, setFishLocations] = useState([]);
 
   useEffect(() => {
-    fetch('https://acnhapi.com/v1/fish/')
-      .then(response => response.json())
-      .then((result) => {
-        setFish(getDailyAcnhResults(result));
-        setFishLocations([...new Set(getDailyAcnhResults(result).map((obj) => obj.availability.location))]);
-      })
+    const fetchFishDataFromAPI = async () => {
+      try {
+        const apiCallResponse = await axios.get('https://acnhapi.com/v1/fish/');
+        const dailyFishResults = getDailyAcnhResults(apiCallResponse.data)
+        setFish(dailyFishResults);
+        setFishLocations([...new Set(dailyFishResults.map((obj) => obj.availability.location))])
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    fetchFishDataFromAPI();
   }, [])
 
   return (
