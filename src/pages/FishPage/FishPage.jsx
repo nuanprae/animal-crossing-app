@@ -11,7 +11,7 @@ const FishPage = () => {
   const [fishLocations, setFishLocations] = useState([]);
 
   useEffect(() => {
-    const fetchFishDataFromAPI = async () => {
+    const fetchFishData = async () => {
       try {
         const apiCallResponse = await axios.get('https://acnhapi.com/v1/fish/');
         const dailyFishResults = getDailyAcnhResults(apiCallResponse.data)
@@ -21,7 +21,7 @@ const FishPage = () => {
         console.error(error);
       }
     }
-    fetchFishDataFromAPI();
+    fetchFishData();
   }, [])
 
   return (
