@@ -6,7 +6,7 @@ const ItemCard = (props) => {
   return (
     <figure className="item-card">
       <img className="item-card-image" src={props.image} alt={props.alt} />
-      <figcaption className="item-card-caption">{props.name}</figcaption>
+      <figcaption className="item-card-caption">{props.caption}</figcaption>
     </figure>
   );
 };
@@ -14,7 +14,7 @@ const ItemCard = (props) => {
 ItemCard.propTypes = {
   image: PropTypes.string,
   alt: PropTypes.string,
-  name: PropTypes.string,
+  caption: PropTypes.string,
 };
 
 export default ItemCard;

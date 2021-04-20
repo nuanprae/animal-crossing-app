@@ -10,7 +10,7 @@ const ItemCardsGrid = (props) => {
           key={item['file-name']}
           image={item.icon_uri}
           alt={item.name['name-EUen']}
-          name={item.name['name-EUen']}
+          caption={item.name['name-EUen']}
         ></ItemCard>
       ))}
     </section>
