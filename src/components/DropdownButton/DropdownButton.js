@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import './drop-down-button.css';
@@ -9,10 +10,11 @@ const DropdownButton = (props) => {
       {option}
     </option>
   ));
+
   return (
     <section className={`drop-down ${props.className}`}>
       <label>{props.label}: </label>
-      <select name={props.label} id={props.label}>
+      <select name={props.label} id={props.label} onChange={props.onChange} value={props.value}>
         {listOptions}
       </select>
     </section>

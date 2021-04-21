@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Header from '../Header/Header';
-import HomePage from '../../pages/HomePage/HomePage';
+// import HomePage from '../../pages/HomePage/HomePage';
 // import FishPage from '../../pages/FishPage/FishPage';
-// import SeaCreaturesPage from '../../pages/SeaCreaturesPage/SeaCreaturesPage';
+import SeaCreaturesPage from '../../pages/SeaCreaturesPage/SeaCreaturesPage';
 // import BugsPage from '../../pages/BugsPage/BugsPage';
 import * as utils from '../../utils';
 
@@ -63,7 +63,7 @@ const App = () => {
         time={currentTime}
       />
       <section className="page">
-        <HomePage />
+        <SeaCreaturesPage />
       </section>
       <button onClick={() => audio.play()}>Play</button>
     </section>

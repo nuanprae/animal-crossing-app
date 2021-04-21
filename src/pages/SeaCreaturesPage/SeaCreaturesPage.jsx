@@ -9,6 +9,7 @@ import './sea-creatures-page.css';
 const SeaCreaturesPage = () => {
   const [seaCreatures, setSeaCreatures] = useState([]);
   const [speed, setSpeed] = useState([]);
+  const [currentValue, setCurrentValue] = useState([]);
 
   useEffect(() => {
     const fetchSeaCreaturesData = async () => {
@@ -16,16 +17,23 @@ const SeaCreaturesPage = () => {
       const dailySeaCreaturesResults = getDailyAcnhResults(apiCallResponse.data);
       setSeaCreatures(dailySeaCreaturesResults);
       setSpeed([...new Set(dailySeaCreaturesResults.map((obj) => obj.speed))]);
-    }
+    };
     fetchSeaCreaturesData();
-  }, [])
-  
+  }, []);
+  const handleEvent = (event) => {
+    setCurrentValue(seaCreatures.filter((seaCreature) => seaCreature.speed === event.target.value));
+  };
   return (
     <main className="page-container">
-      <ItemCardsGrid data={seaCreatures}/>
+      <ItemCardsGrid data={currentValue} />
       <section className="sort">
-        <DropdownButton label={'price'} options={['price', 'name']} />
-        <DropdownButton label={'location'} options={speed} />
+        <DropdownButton label={'sort by'} options={['price', 'name']} />
+        <DropdownButton
+          label={'speed'}
+          onChange={handleEvent}
+          options={speed}
+          // value={currentValue}
+        />
         <DropdownButton label={'languages'} options={['English', 'German', 'French']} />
       </section>
     </main>
