@@ -6,7 +6,6 @@ import { getDailyAcnhResults } from '../../utils';
 
 import './bugs-page.css';
 
-
 const BugsPage = () => {
   const [bugs, setBugs] = useState([]);
   const [rarity, setRarity] = useState([]);
@@ -17,10 +16,10 @@ const BugsPage = () => {
       const dailyBugsResults = getDailyAcnhResults(apiCallResponse.data);
       setBugs(dailyBugsResults);
       setRarity([...new Set(dailyBugsResults.map((obj) => obj.availability.rarity))]);
-    }
+    };
     fetchBugsData();
   }, []);
-  
+
   return (
     <main className="page-container">
       <ItemCardsGrid data={bugs} />
