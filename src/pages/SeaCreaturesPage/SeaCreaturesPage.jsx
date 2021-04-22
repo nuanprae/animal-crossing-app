@@ -9,7 +9,7 @@ import './sea-creatures-page.css';
 const SeaCreaturesPage = () => {
   const [allSeaCreatures, setAllSeaCreatures] = useState([]);
   const [speedTypes, setSpeedTypes] = useState([]);
-  const [seaCreaturesSortedBySpeed, setSeaCreaturesSortedBySpeed] = useState([]);
+  const [seaCreatures, setSeaCreatures] = useState([]);
   const [language, setLanguage] = useState('name-EUen');
 
   useEffect(() => {
@@ -17,15 +17,21 @@ const SeaCreaturesPage = () => {
       const apiCallResponse = await axios.get('https://acnhapi.com/v1/sea/');
       const dailySeaCreaturesResults = getDailyAcnhResults(apiCallResponse.data);
       setAllSeaCreatures(dailySeaCreaturesResults);
-      setSpeedTypes([...new Set(dailySeaCreaturesResults.map((obj) => obj.speed))]);
+      setSeaCreatures(dailySeaCreaturesResults);
+      setSpeedTypes(['All', ...new Set(dailySeaCreaturesResults.map((obj) => obj.speed))]);
     };
     fetchSeaCreaturesData();
   }, []);
 
+  useEffect(() => {});
   const handleSpeed = (event) => {
-    setSeaCreaturesSortedBySpeed(
-      allSeaCreatures.filter((seaCreature) => seaCreature.speed === event.target.value),
-    );
+    if (event.target.value === 'All') {
+      setSeaCreatures(allSeaCreatures);
+    } else {
+      setSeaCreatures(
+        allSeaCreatures.filter((seaCreature) => seaCreature.speed === event.target.value),
+      );
+    }
   };
 
   const handleLanguage = (event) => {
@@ -43,8 +49,7 @@ const SeaCreaturesPage = () => {
           options={['name-EUen', 'name-JPja']}
         />
       </section>
-      <ItemCardsGrid data={seaCreaturesSortedBySpeed} language={language} />
-      {/* <ItemCardsGrid data={currentValue} /> */}
+      <ItemCardsGrid data={seaCreatures} language={language} />
     </main>
   );
 };
