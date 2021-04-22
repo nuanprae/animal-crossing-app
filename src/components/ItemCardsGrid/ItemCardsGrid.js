@@ -7,10 +7,11 @@ const ItemCardsGrid = (props) => {
     <section className="item-cards-grid">
       {props.data.map((item) => (
         <ItemCard
+          className={props.className}
           key={item['file-name']}
           image={item.icon_uri}
-          alt={item.name['name-EUen']}
-          caption={item.name['name-EUen']}
+          alt={item.name[`${props.language}`]}
+          caption={item.name[`${props.language}`]}
         ></ItemCard>
       ))}
     </section>

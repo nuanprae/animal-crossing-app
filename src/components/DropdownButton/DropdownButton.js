@@ -14,7 +14,7 @@ const DropdownButton = (props) => {
   return (
     <section className={`drop-down ${props.className}`}>
       <label>{props.label}: </label>
-      <select name={props.label} id={props.label} onChange={props.onChange} value={props.value}>
+      <select name={props.label} id={props.label} onChange={props.onChange}>
         {listOptions}
       </select>
     </section>

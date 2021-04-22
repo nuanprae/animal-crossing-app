@@ -8,3 +8,6 @@
   gap: 1em;
   justify-content: space-between;
 }
+.gray-scale {
+  filter: grayscale(100%);
+}

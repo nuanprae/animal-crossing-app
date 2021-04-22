@@ -7,35 +7,44 @@ import { getDailyAcnhResults } from '../../utils';
 import './sea-creatures-page.css';
 
 const SeaCreaturesPage = () => {
-  const [seaCreatures, setSeaCreatures] = useState([]);
-  const [speed, setSpeed] = useState([]);
-  const [currentValue, setCurrentValue] = useState([]);
+  const [allSeaCreatures, setAllSeaCreatures] = useState([]);
+  const [speedTypes, setSpeedTypes] = useState([]);
+  const [seaCreaturesSortedBySpeed, setSeaCreaturesSortedBySpeed] = useState([]);
+  const [language, setLanguage] = useState('name-EUen');
 
   useEffect(() => {
     const fetchSeaCreaturesData = async () => {
       const apiCallResponse = await axios.get('https://acnhapi.com/v1/sea/');
       const dailySeaCreaturesResults = getDailyAcnhResults(apiCallResponse.data);
-      setSeaCreatures(dailySeaCreaturesResults);
-      setSpeed([...new Set(dailySeaCreaturesResults.map((obj) => obj.speed))]);
+      setAllSeaCreatures(dailySeaCreaturesResults);
+      setSpeedTypes([...new Set(dailySeaCreaturesResults.map((obj) => obj.speed))]);
     };
     fetchSeaCreaturesData();
   }, []);
-  const handleEvent = (event) => {
-    setCurrentValue(seaCreatures.filter((seaCreature) => seaCreature.speed === event.target.value));
+
+  const handleSpeed = (event) => {
+    setSeaCreaturesSortedBySpeed(
+      allSeaCreatures.filter((seaCreature) => seaCreature.speed === event.target.value),
+    );
   };
+
+  const handleLanguage = (event) => {
+    setLanguage(event.target.value);
+  };
+
   return (
     <main className="page-container">
-      <ItemCardsGrid data={currentValue} />
       <section className="sort">
         <DropdownButton label={'sort by'} options={['price', 'name']} />
+        <DropdownButton label={'speed'} onChange={handleSpeed} options={speedTypes} />
         <DropdownButton
-          label={'speed'}
-          onChange={handleEvent}
-          options={speed}
-          // value={currentValue}
+          label={'languages'}
+          onChange={handleLanguage}
+          options={['name-EUen', 'name-JPja']}
         />
-        <DropdownButton label={'languages'} options={['English', 'German', 'French']} />
       </section>
+      <ItemCardsGrid data={seaCreaturesSortedBySpeed} language={language} />
+      {/* <ItemCardsGrid data={currentValue} /> */}
     </main>
   );
 };
