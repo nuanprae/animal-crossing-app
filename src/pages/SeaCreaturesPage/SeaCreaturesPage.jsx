@@ -9,29 +9,41 @@ import './sea-creatures-page.css';
 const SeaCreaturesPage = () => {
   const [allSeaCreatures, setAllSeaCreatures] = useState([]);
   const [speedTypes, setSpeedTypes] = useState([]);
+  const [selectedSpeed, setSelectedSpeed] = useState('All');
   const [seaCreatures, setSeaCreatures] = useState([]);
   const [language, setLanguage] = useState('name-EUen');
 
   useEffect(() => {
     const fetchSeaCreaturesData = async () => {
-      const apiCallResponse = await axios.get('https://acnhapi.com/v1/sea/');
-      const dailySeaCreaturesResults = getDailyAcnhResults(apiCallResponse.data);
-      setAllSeaCreatures(dailySeaCreaturesResults);
-      setSeaCreatures(dailySeaCreaturesResults);
-      setSpeedTypes(['All', ...new Set(dailySeaCreaturesResults.map((obj) => obj.speed))]);
+      try {
+        const apiCallResponse = await axios.get('https://acnhapi.com/v1/sea/');
+        const dailySeaCreaturesResults = getDailyAcnhResults(apiCallResponse.data);
+        setAllSeaCreatures(dailySeaCreaturesResults);
+        setSeaCreatures(dailySeaCreaturesResults);
+
+        const fetchedSpeedTypes = new Set(dailySeaCreaturesResults.map((obj) => obj.speed));
+        setSpeedTypes(['All', ...fetchedSpeedTypes]);
+      } catch (error) {
+        console.error(error);
+      }
     };
     fetchSeaCreaturesData();
   }, []);
 
-  useEffect(() => {});
   const handleSpeed = (event) => {
-    if (event.target.value === 'All') {
-      setSeaCreatures(allSeaCreatures);
-    } else {
-      setSeaCreatures(
-        allSeaCreatures.filter((seaCreature) => seaCreature.speed === event.target.value),
+    // if (event.target.value === 'All') {
+    //   setSeaCreatures(allSeaCreatures);
+    // } else {
+    setSeaCreatures(() => {
+      const selected = allSeaCreatures.filter(
+        (seaCreature) => seaCreature.speed === event.target.value,
       );
-    }
+      const notSelected = allSeaCreatures.filter(
+        (seaCreature) => seaCreature.speed !== event.target.value,
+      );
+      setSelectedSpeed(event.target.value);
+      return [...selected, ...notSelected];
+    });
   };
 
   const handleLanguage = (event) => {
@@ -49,7 +61,7 @@ const SeaCreaturesPage = () => {
           options={['name-EUen', 'name-JPja']}
         />
       </section>
-      <ItemCardsGrid data={seaCreatures} language={language} />
+      <ItemCardsGrid data={seaCreatures} language={language} selectedSpeed={selectedSpeed} />
     </main>
   );
 };
