@@ -30,6 +30,16 @@ const SeaCreaturesPage = () => {
     fetchSeaCreaturesData();
   }, []);
 
+  const handleSort = (event) => {
+    if (event.target.value === 'Highest price') {
+      setSeaCreatures(seaCreatures.sort((a, b) => b.price - a.price));
+      console.log(seaCreatures);
+    } else if (event.target.value === 'Lowest price') {
+      setSeaCreatures(seaCreatures.sort((a, b) => a.price - b.price));
+      console.log(seaCreatures);
+    }
+  };
+
   const handleSpeed = (event) => {
     if (event.target.value === 'All') {
       setSeaCreatures(allSeaCreatures);
@@ -49,7 +59,11 @@ const SeaCreaturesPage = () => {
   return (
     <main className="page-container">
       <section className="sort">
-        <DropdownButton label={'sort by'} options={['price', 'name']} />
+        <DropdownButton
+          label={'sort by'}
+          onChange={handleSort}
+          options={['Highest price', 'Lowest price']}
+        />
         <DropdownButton label={'speed'} onChange={handleSpeed} options={speedTypes} />
         <DropdownButton
           label={'languages'}
