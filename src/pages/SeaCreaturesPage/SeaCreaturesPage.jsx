@@ -31,19 +31,15 @@ const SeaCreaturesPage = () => {
   }, []);
 
   const handleSpeed = (event) => {
-    // if (event.target.value === 'All') {
-    //   setSeaCreatures(allSeaCreatures);
-    // } else {
-    setSeaCreatures(() => {
-      const selected = allSeaCreatures.filter(
-        (seaCreature) => seaCreature.speed === event.target.value,
-      );
-      const notSelected = allSeaCreatures.filter(
-        (seaCreature) => seaCreature.speed !== event.target.value,
+    if (event.target.value === 'All') {
+      setSeaCreatures(allSeaCreatures);
+      setSelectedSpeed(event.target.value);
+    } else {
+      setSeaCreatures(
+        allSeaCreatures.filter((seaCreature) => seaCreature.speed === event.target.value),
       );
       setSelectedSpeed(event.target.value);
-      return [...selected, ...notSelected];
-    });
+    }
   };
 
   const handleLanguage = (event) => {

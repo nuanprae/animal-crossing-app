@@ -1,8 +1,6 @@
 .item-cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(128px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(128px, 128px));
   gap: 2em;
-}
-.gray-scale {
-  filter: grayscale(100%);
+  justify-content: center;
 }
