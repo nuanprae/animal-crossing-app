@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import useFetchData from '../../hooks/useFetchData';
 import axios from 'axios';
 import ItemCardsGrid from '../../components/ItemCardsGrid/ItemCardsGrid';
 import DropdownButton from '../../components/DropdownButton/DropdownButton';
@@ -9,15 +8,10 @@ import './sea-creatures-page.css';
 
 const SeaCreaturesPage = () => {
   const [allSeaCreatures, setAllSeaCreatures] = useState([]);
-  const [speedTypes, setSpeedTypes] = useState([]);
-  const [seaCreatures, setSeaCreatures] = useState([]);
   const [language, setLanguage] = useState('name-EUen');
-
-  // const { data, types } = useFetchData('https://acnhapi.com/v1/sea/', 'speed');
-
-  // useEffect(() => {
-  //   console.log(data);
-  // }, []);
+  const [seaCreatures, setSeaCreatures] = useState([]);
+  const [speedTypes, setSpeedTypes] = useState([]);
+  const [sortPrice, setSortPrice] = useState('');
 
   useEffect(() => {
     const fetchSeaCreaturesData = async () => {
@@ -39,19 +33,29 @@ const SeaCreaturesPage = () => {
   const handleSort = (event) => {
     if (event.target.value === 'Highest price') {
       setSeaCreatures([...seaCreatures].sort((a, b) => b.price - a.price));
-      console.log(seaCreatures);
+      setSortPrice(event.target.value);
     } else if (event.target.value === 'Lowest price') {
       setSeaCreatures([...seaCreatures].sort((a, b) => a.price - b.price));
-      console.log(seaCreatures);
+      setSortPrice(event.target.value);
     }
   };
 
   const handleSpeed = (event) => {
-    if (event.target.value === 'All') {
-      setSeaCreatures(allSeaCreatures);
-    } else {
+    if (event.target.value === 'All' && sortPrice === 'Highest price') {
+      setSeaCreatures([...allSeaCreatures].sort((a, b) => b.price - a.price));
+    } else if (event.target.value === 'All' && sortPrice === 'Lowest price') {
+      setSeaCreatures([...allSeaCreatures].sort((a, b) => a.price - b.price));
+    } else if (event.target.value && sortPrice === 'Highest price') {
       setSeaCreatures(
-        allSeaCreatures.filter((seaCreature) => seaCreature.speed === event.target.value),
+        [...allSeaCreatures.filter((seaCreature) => seaCreature.speed === event.target.value)].sort(
+          (a, b) => b.price - a.price,
+        ),
+      );
+    } else if (event.target.value && sortPrice === 'Lowest price') {
+      setSeaCreatures(
+        [...allSeaCreatures.filter((seaCreature) => seaCreature.speed === event.target.value)].sort(
+          (a, b) => a.price - b.price,
+        ),
       );
     }
   };

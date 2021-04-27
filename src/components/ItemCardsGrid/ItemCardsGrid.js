@@ -12,6 +12,7 @@ const ItemCardsGrid = (props) => {
             image={item.icon_uri}
             alt={item.name[`${props.language}`]}
             caption={item.name[`${props.language}`]}
+            price={item.price}
           ></ItemCard>
         );
       })}

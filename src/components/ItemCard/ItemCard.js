@@ -7,6 +7,7 @@ const ItemCard = (props) => {
     <figure className={`item-card ${props.className}`}>
       <img className="item-card-image" src={props.image} alt={props.alt} />
       <figcaption className="item-card-caption">{props.caption}</figcaption>
+      <figcaption className="item-card-caption">{props.price}</figcaption>
     </figure>
   );
 };
