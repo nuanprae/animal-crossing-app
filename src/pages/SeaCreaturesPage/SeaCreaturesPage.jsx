@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import ItemCardsGrid from '../../components/ItemCardsGrid/ItemCardsGrid';
 import DropdownButton from '../../components/DropdownButton/DropdownButton';
-import { getDailyAcnhResults } from '../../utils';
+import { getDailyAcnhResults, sortAscendingOrder, sortDescendingOrder } from '../../utils';
 
 import './sea-creatures-page.css';
 
@@ -11,7 +11,7 @@ const SeaCreaturesPage = () => {
   const [language, setLanguage] = useState('name-EUen');
   const [seaCreatures, setSeaCreatures] = useState([]);
   const [speedTypes, setSpeedTypes] = useState([]);
-  const [sortPrice, setSortPrice] = useState('');
+  const [sortType, setSortType] = useState('Highest price');
 
   useEffect(() => {
     const fetchSeaCreaturesData = async () => {
@@ -19,8 +19,7 @@ const SeaCreaturesPage = () => {
         const apiCallResponse = await axios.get('https://acnhapi.com/v1/sea/');
         const dailySeaCreaturesResults = getDailyAcnhResults(apiCallResponse.data);
         setAllSeaCreatures(dailySeaCreaturesResults);
-        setSeaCreatures(dailySeaCreaturesResults.sort((a, b) => b.price - a.price));
-
+        setSeaCreatures(sortDescendingOrder(dailySeaCreaturesResults, 'price'));
         const fetchedSpeedTypes = new Set(dailySeaCreaturesResults.map((obj) => obj.speed));
         setSpeedTypes(['All', ...fetchedSpeedTypes]);
       } catch (error) {
@@ -32,31 +31,34 @@ const SeaCreaturesPage = () => {
 
   const handleSort = (event) => {
     if (event.target.value === 'Highest price') {
-      setSeaCreatures([...seaCreatures].sort((a, b) => b.price - a.price));
-      setSortPrice(event.target.value);
+      setSeaCreatures(sortDescendingOrder(seaCreatures, 'price'));
+      setSortType(event.target.value);
     } else if (event.target.value === 'Lowest price') {
-      setSeaCreatures([...seaCreatures].sort((a, b) => a.price - b.price));
-      setSortPrice(event.target.value);
+      setSeaCreatures(sortAscendingOrder(seaCreatures, 'price'));
+      setSortType(event.target.value);
     }
   };
 
   const handleSpeed = (event) => {
-    if (event.target.value === 'All' && sortPrice === 'Highest price') {
-      setSeaCreatures([...allSeaCreatures].sort((a, b) => b.price - a.price));
-    } else if (event.target.value === 'All' && sortPrice === 'Lowest price') {
-      setSeaCreatures([...allSeaCreatures].sort((a, b) => a.price - b.price));
-    } else if (event.target.value && sortPrice === 'Highest price') {
-      setSeaCreatures(
-        [...allSeaCreatures.filter((seaCreature) => seaCreature.speed === event.target.value)].sort(
-          (a, b) => b.price - a.price,
-        ),
-      );
-    } else if (event.target.value && sortPrice === 'Lowest price') {
-      setSeaCreatures(
-        [...allSeaCreatures.filter((seaCreature) => seaCreature.speed === event.target.value)].sort(
-          (a, b) => a.price - b.price,
-        ),
-      );
+    if (event.target.value === 'All') {
+      setSeaCreatures(() => {
+        if (sortType === 'Highest price') {
+          return sortDescendingOrder(allSeaCreatures, 'price');
+        } else if (sortType === 'Lowest price') {
+          return sortAscendingOrder(allSeaCreatures, 'price');
+        }
+      });
+    } else {
+      setSeaCreatures(() => {
+        const filteredBySpeed = allSeaCreatures.filter(
+          (seaCreature) => seaCreature.speed === event.target.value,
+        );
+        if (sortType === 'Highest price') {
+          return sortDescendingOrder(filteredBySpeed, 'price');
+        } else if (sortType === 'Lowest price') {
+          return sortAscendingOrder(filteredBySpeed, 'price');
+        }
+      });
     }
   };
 

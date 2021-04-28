@@ -26,3 +26,11 @@ export const getDailyAcnhResults = (data) => {
   const monthNumber = getMonthNumber();
   return results.filter((obj) => obj.availability['month-array-northern'].includes(monthNumber));
 };
+
+export const sortDescendingOrder = (array, type) => {
+  return [...array].sort((a, b) => b[type] - a[type]);
+};
+
+export const sortAscendingOrder = (array, type) => {
+  return [...array].sort((a, b) => a[type] - b[type]);
+};
