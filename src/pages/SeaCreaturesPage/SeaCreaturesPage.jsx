@@ -6,8 +6,6 @@ import './sea-creatures-page.css';
 import useFetchData from '../../hooks/useFetchData';
 
 const SeaCreaturesPage = () => {
-  const [types, setTypes] = useState([]);
-
   const {
     data,
     isLoading,
@@ -17,7 +15,9 @@ const SeaCreaturesPage = () => {
     handleSortByPrice,
     handleSortByType,
     handleSelectLanguage,
-  } = useFetchData('https://acnhapi.com/v1/sea/');
+  } = useFetchData('https://acnhapi.com/v1/sea/', 'speed');
+
+  const [types, setTypes] = useState([]);
 
   useEffect(() => {
     setTypes(() => {
@@ -49,7 +49,7 @@ const SeaCreaturesPage = () => {
           options={['name-EUen', 'name-JPja']}
         />
       </section>
-      <ItemCardsGrid data={items} language={selectedLanguage} />
+      <ItemCardsGrid items={items} language={selectedLanguage} />
     </main>
   );
 };

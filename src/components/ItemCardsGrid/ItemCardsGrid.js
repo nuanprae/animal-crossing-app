@@ -5,7 +5,7 @@ import './item-cards-grid.css';
 const ItemCardsGrid = (props) => {
   return (
     <section className="item-cards-grid">
-      {props.data?.map((item) => {
+      {props.items?.map((item) => {
         return (
           <ItemCard
             key={item['file-name']}
