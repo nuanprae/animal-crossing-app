@@ -12,7 +12,7 @@ const FishPage = () => {
   const [sortByPrice, setSortByPrice] = useState('Highest price');
   const [types, setTypes] = useState([]);
 
-  const { data } = useFetchData('https://acnhapi.com/v1/fish/');
+  const { data, isLoading, hasError } = useFetchData('https://acnhapi.com/v1/fish/');
 
   useEffect(() => {
     setFish(sortDescendingOrder(data, 'price'));
@@ -58,6 +58,14 @@ const FishPage = () => {
   const handleSelectLanguage = (event) => {
     setLanguage(event.target.value);
   };
+
+  if (isLoading) {
+    return <h2>Loading data...please wait</h2>;
+  }
+
+  if (hasError) {
+    return <h2>Sorry, something went wrong...</h2>;
+  }
 
   return (
     <main className="page-container">
