@@ -4,11 +4,7 @@ import './drop-down-button.css';
 
 const DropdownButton = (props) => {
   const options = props.options;
-  const listOptions = options.map((option) => (
-    <option value={option} key={option}>
-      {option}
-    </option>
-  ));
+  const listOptions = options.map((option) => <option key={option}>{option}</option>);
 
   return (
     <section className={`drop-down ${props.className}`}>
@@ -22,8 +18,8 @@ const DropdownButton = (props) => {
 
 DropdownButton.propTypes = {
   className: PropTypes.string,
-  options: PropTypes.array,
   label: PropTypes.string,
+  options: PropTypes.array,
 };
 
 export default DropdownButton;

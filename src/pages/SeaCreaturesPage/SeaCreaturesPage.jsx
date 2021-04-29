@@ -10,14 +10,19 @@ const SeaCreaturesPage = () => {
   const [language, setLanguage] = useState('name-EUen');
   const [seaCreatures, setSeaCreatures] = useState([]);
   const [sortByPrice, setSortByPrice] = useState('Highest price');
+  const [types, setTypes] = useState([]);
 
-  const { data, types } = useFetchData('https://acnhapi.com/v1/sea/', 'speed');
+  const { data } = useFetchData('https://acnhapi.com/v1/sea/');
 
   useEffect(() => {
     setSeaCreatures(sortDescendingOrder(data, 'price'));
+    setTypes(() => {
+      const speedTypes = new Set(data.map((obj) => obj.speed));
+      return ['All', ...speedTypes];
+    });
   }, [data]);
 
-  const handleSort = (event) => {
+  const handleSortByPrice = (event) => {
     if (event.target.value === 'Highest price') {
       setSeaCreatures(sortDescendingOrder(seaCreatures, 'price'));
       setSortByPrice(event.target.value);
@@ -27,7 +32,7 @@ const SeaCreaturesPage = () => {
     }
   };
 
-  const handleSpeed = (event) => {
+  const handleSortByType = (event) => {
     if (event.target.value === 'All') {
       setSeaCreatures(() => {
         if (sortByPrice === 'Highest price') {
@@ -50,7 +55,7 @@ const SeaCreaturesPage = () => {
     }
   };
 
-  const handleLanguage = (event) => {
+  const handleSelectLanguage = (event) => {
     setLanguage(event.target.value);
   };
 
@@ -59,13 +64,13 @@ const SeaCreaturesPage = () => {
       <section className="sort">
         <DropdownButton
           label={'sort by'}
-          onChange={handleSort}
+          onChange={handleSortByPrice}
           options={['Highest price', 'Lowest price']}
         />
-        <DropdownButton label={'speed'} onChange={handleSpeed} options={types} />
+        <DropdownButton label={'speed'} onChange={handleSortByType} options={types} />
         <DropdownButton
           label={'languages'}
-          onChange={handleLanguage}
+          onChange={handleSelectLanguage}
           options={['name-EUen', 'name-JPja']}
         />
       </section>
