@@ -3,7 +3,7 @@ import axios from 'axios';
 import { getDailyAcnhResults } from '../utils';
 
 const useFetchData = (apiEndPoint, type) => {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
   const [types, setTypes] = useState([]);
 
   useEffect(() => {
@@ -12,7 +12,6 @@ const useFetchData = (apiEndPoint, type) => {
         const apiCallResponse = await axios.get(apiEndPoint);
         const dailyResults = getDailyAcnhResults(apiCallResponse.data);
         setData(dailyResults);
-
         const fetchedTypes = new Set(dailyResults.map((obj) => obj[type]));
         setTypes(['All', ...fetchedTypes]);
       } catch (error) {
