@@ -6,8 +6,8 @@ const ItemCard = (props) => {
   return (
     <figure className={`item-card ${props.className}`}>
       <img className="item-card-image" src={props.image} alt={props.alt} />
-      <figcaption className="item-card-caption">{props.caption}</figcaption>
-      <figcaption className="item-card-caption">{props.price}</figcaption>
+      <figcaption className="item-card-caption1">{props.caption}</figcaption>
+      <figcaption className="item-card-caption2">{props.price}</figcaption>
     </figure>
   );
 };

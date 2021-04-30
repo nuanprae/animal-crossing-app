@@ -13,7 +13,7 @@ const SeaCreaturesPage = () => {
     items,
     selectedLanguage,
     handleSortByPrice,
-    handleSortByType,
+    handleSortBySpeedType,
     handleSelectLanguage,
   } = useFetchData('https://acnhapi.com/v1/sea/', 'speed');
 
@@ -42,7 +42,7 @@ const SeaCreaturesPage = () => {
           onChange={handleSortByPrice}
           options={['Highest price', 'Lowest price']}
         />
-        <DropdownButton label={'speed'} onChange={handleSortByType} options={types} />
+        <DropdownButton label={'speed'} onChange={handleSortBySpeedType} options={types} />
         <DropdownButton
           label={'languages'}
           onChange={handleSelectLanguage}

@@ -17,7 +17,7 @@ const FishPage = () => {
     handleSortByPrice,
     handleSortByType,
     handleSelectLanguage,
-  } = useFetchData('https://acnhapi.com/v1/fish/', 'availability', 'location');
+  } = useFetchData('https://acnhapi.com/v1/fish/', 'location');
 
   useEffect(() => {
     setTypes(() => {

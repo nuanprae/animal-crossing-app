@@ -10,7 +10,13 @@
   border-top-right-radius: 10px;
 }
 
-.item-card-caption {
+.item-card-caption1 {
+  background-color: #9cd2df;
+  text-align: center;
+  white-space: nowrap;
+  padding: 1em 0.5em;
+}
+.item-card-caption2 {
   background-color: #9cd2df;
   text-align: center;
   white-space: nowrap;

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { getDailyAcnhResults, sortAscendingOrder, sortDescendingOrder } from '../utils';
 
-const useFetchData = (apiEndPoint, propertyToFilter, nestedPropertyToFilter) => {
+const useFetchData = (apiEndPoint, type) => {
   const [data, setData] = useState([]);
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -50,9 +50,8 @@ const useFetchData = (apiEndPoint, propertyToFilter, nestedPropertyToFilter) => 
       });
     } else {
       setItems(() => {
-        const filtered = data.filter(
-          (obj) => obj[propertyToFilter]?.[nestedPropertyToFilter] === event.target.value,
-        );
+        const filtered = data.filter((obj) => obj.availability[type] === event.target.value);
+
         if (sortByPrice === 'Highest price') {
           return sortDescendingOrder(filtered, 'price');
         } else if (sortByPrice === 'Lowest price') {
@@ -61,6 +60,29 @@ const useFetchData = (apiEndPoint, propertyToFilter, nestedPropertyToFilter) => 
       });
     }
   };
+
+  const handleSortBySpeedType = (event) => {
+    if (event.target.value === 'All') {
+      setItems(() => {
+        if (sortByPrice === 'Highest price') {
+          return sortDescendingOrder(data, 'price');
+        } else if (sortByPrice === 'Lowest price') {
+          return sortAscendingOrder(data, 'price');
+        }
+      });
+    } else {
+      setItems(() => {
+        const filtered = data.filter((obj) => obj[type] === event.target.value);
+
+        if (sortByPrice === 'Highest price') {
+          return sortDescendingOrder(filtered, 'price');
+        } else if (sortByPrice === 'Lowest price') {
+          return sortAscendingOrder(filtered, 'price');
+        }
+      });
+    }
+  };
+
   const handleSelectLanguage = (event) => {
     if (event.target.value === 'English') {
       setSelectedLanguage('name-EUen');
@@ -77,6 +99,7 @@ const useFetchData = (apiEndPoint, propertyToFilter, nestedPropertyToFilter) => 
     selectedLanguage: selectedLanguage,
     handleSortByPrice: handleSortByPrice,
     handleSortByType: handleSortByType,
+    handleSortBySpeedType: handleSortBySpeedType,
     handleSelectLanguage: handleSelectLanguage,
   };
 

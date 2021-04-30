@@ -17,7 +17,7 @@ const BugsPage = () => {
     handleSortByPrice,
     handleSortByType,
     handleSelectLanguage,
-  } = useFetchData('https://acnhapi.com/v1/bugs/', 'availability', 'rarity');
+  } = useFetchData('https://acnhapi.com/v1/bugs/', 'rarity');
 
   useEffect(() => {
     setTypes(() => {
