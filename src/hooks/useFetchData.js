@@ -62,7 +62,11 @@ const useFetchData = (apiEndPoint, propertyToFilter, nestedPropertyToFilter) => 
     }
   };
   const handleSelectLanguage = (event) => {
-    setSelectedLanguage(event.target.value);
+    if (event.target.value === 'English') {
+      setSelectedLanguage('name-EUen');
+    } else if (event.target.value === 'Japanese') {
+      setSelectedLanguage('name-JPja');
+    }
   };
 
   const fetchedDataState = {

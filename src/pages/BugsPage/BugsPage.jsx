@@ -46,7 +46,7 @@ const BugsPage = () => {
         <DropdownButton
           label={'languages'}
           onChange={handleSelectLanguage}
-          options={['name-EUen', 'name-JPja']}
+          options={['English', 'Japanese']}
         />
       </section>
       <ItemCardsGrid items={items} language={selectedLanguage} />
