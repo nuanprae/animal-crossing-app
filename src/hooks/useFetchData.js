@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { getDailyAcnhResults, sortAscendingOrder, sortDescendingOrder } from '../utils';
 
-const useFetchData = (apiEndPoint, property, nestedProperty) => {
+const useFetchData = (apiEndPoint, propertyToFilter, nestedPropertyToFilter) => {
   const [data, setData] = useState([]);
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -51,7 +51,7 @@ const useFetchData = (apiEndPoint, property, nestedProperty) => {
     } else {
       setItems(() => {
         const filtered = data.filter(
-          (obj) => obj[property]?.[nestedProperty] === event.target.value,
+          (obj) => obj[propertyToFilter]?.[nestedPropertyToFilter] === event.target.value,
         );
         if (sortByPrice === 'Highest price') {
           return sortDescendingOrder(filtered, 'price');
