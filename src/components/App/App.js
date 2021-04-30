@@ -50,8 +50,6 @@ const App = () => {
     };
   }, []);
 
-  let audio = new Audio('https://acnhapi.com/v1/hourly/1');
-
   return (
     <section className="app">
       <Header
@@ -67,7 +65,6 @@ const App = () => {
         <FishPage />
         <BugsPage />
       </section>
-      <button onClick={() => audio.play()}>Play</button>
     </section>
   );
 };

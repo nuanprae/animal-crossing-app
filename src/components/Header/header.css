@@ -16,6 +16,6 @@
   justify-content: space-around;
   align-items: center;
 }
-.sub-header img {
-  width: 5vw;
+.weather-icon {
+  width: 4rem;
 }
