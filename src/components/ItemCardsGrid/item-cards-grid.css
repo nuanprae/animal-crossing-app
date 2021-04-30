@@ -1,6 +1,6 @@
 .item-cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(128px, 128px));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 200px));
   gap: 2em;
   justify-content: center;
 }
