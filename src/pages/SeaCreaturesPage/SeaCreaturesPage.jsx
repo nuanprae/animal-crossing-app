@@ -1,25 +1,26 @@
 import { useState, useEffect } from 'react';
 import ItemCardsGrid from '../../components/ItemCardsGrid/ItemCardsGrid';
 import DropdownButton from '../../components/DropdownButton/DropdownButton';
+import { sortDescendingOrder } from '../../utils';
 
 import './sea-creatures-page.css';
 import useFetchData from '../../hooks/useFetchData';
+import useSortByPrice from '../../hooks/useSortByPrice';
+import useSortBySpeedType from '../../hooks/useSortBySpeedType';
+import useSelectLanguage from '../../hooks/useSelectLanguage';
 
 const SeaCreaturesPage = () => {
-  const {
-    data,
-    isLoading,
-    hasError,
-    items,
-    selectedLanguage,
-    handleSortByPrice,
-    handleSortBySpeedType,
-    handleSelectLanguage,
-  } = useFetchData('https://acnhapi.com/v1/sea/', 'speed');
-
+  const [items, setItems] = useState([]);
+  const [selectedLanguage, setSelectedLanguage] = useState('name-EUen');
   const [types, setTypes] = useState([]);
 
+  const { data, isLoading, hasError } = useFetchData('https://acnhapi.com/v1/sea/');
+  const { handleSortByPrice, sortByPrice } = useSortByPrice(items, setItems);
+  const { handleSortBySpeedType } = useSortBySpeedType(data, setItems, sortByPrice);
+  const { handleSelectLanguage } = useSelectLanguage(setSelectedLanguage);
+
   useEffect(() => {
+    setItems(sortDescendingOrder(data, 'price'));
     setTypes(() => {
       const speedTypes = new Set(data.map((obj) => obj.speed));
       return ['All', ...speedTypes];
