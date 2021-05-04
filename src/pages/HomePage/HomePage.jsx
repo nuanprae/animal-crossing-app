@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import TextBlock from '../../components/TextBlock/TextBlock';
 import ItemCard from '../../components/ItemCard/ItemCard';
@@ -65,20 +64,23 @@ const HomePage = (props) => {
 
   return (
     <main className={`home-page ${props.className}`}>
-      <TextBlock className={'text-block'} text={'Currently Available'} />
+      <TextBlock className={'text-block'} text={'Available Today'} />
       <section className={'item-cards'}>
-        <Link to="/fish">
-          <ItemCard image={fishIcon} caption={`${numberOfFishAvailable}/${totalFish}`} />
-        </Link>
-        <Link to="/sea-creatures">
-          <ItemCard
-            image={seaCreatureIcon}
-            caption={`${numberOfSeaCreaturesAvailable}/${totalSeaCreatures}`}
-          />
-        </Link>
-        <Link to="/bugs">
-          <ItemCard image={bugIcon} caption={`${numberOfBugsAvailable}/${totalBugs}`} />
-        </Link>
+        <ItemCard
+          image={fishIcon}
+          caption1={'fish'}
+          caption2={`${numberOfFishAvailable} out of ${totalFish}`}
+        />
+        <ItemCard
+          image={seaCreatureIcon}
+          caption1={'sea creatures'}
+          caption2={`${numberOfSeaCreaturesAvailable} out of ${totalSeaCreatures}`}
+        />
+        <ItemCard
+          image={bugIcon}
+          caption1={'bugs'}
+          caption2={`${numberOfBugsAvailable} out of ${totalBugs}`}
+        />
       </section>
     </main>
   );

@@ -11,8 +11,8 @@ const ItemCardsGrid = (props) => {
             key={item['file-name']}
             image={item.icon_uri}
             alt={item.name[`${props.language}`]}
-            caption={item.name[`${props.language}`]}
-            price={item.price}
+            caption1={item.name[`${props.language}`]}
+            caption2={item.price}
           ></ItemCard>
         );
       })}
