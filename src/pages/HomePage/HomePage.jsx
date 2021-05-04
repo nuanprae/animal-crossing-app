@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import TextBlock from '../../components/TextBlock/TextBlock';
 import ItemCard from '../../components/ItemCard/ItemCard';
+
 import { getDailyAcnhResults } from '../../utils';
 
 import './home-page.css';
@@ -65,12 +67,18 @@ const HomePage = (props) => {
     <main className={`home-page ${props.className}`}>
       <TextBlock className={'text-block'} text={'Currently Available'} />
       <section className={'item-cards'}>
-        <ItemCard image={fishIcon} caption={`${numberOfFishAvailable}/${totalFish}`} />
-        <ItemCard
-          image={seaCreatureIcon}
-          caption={`${numberOfSeaCreaturesAvailable}/${totalSeaCreatures}`}
-        />
-        <ItemCard image={bugIcon} caption={`${numberOfBugsAvailable}/${totalBugs}`} />
+        <Link to="/fish">
+          <ItemCard image={fishIcon} caption={`${numberOfFishAvailable}/${totalFish}`} />
+        </Link>
+        <Link to="/sea-creatures">
+          <ItemCard
+            image={seaCreatureIcon}
+            caption={`${numberOfSeaCreaturesAvailable}/${totalSeaCreatures}`}
+          />
+        </Link>
+        <Link to="/bugs">
+          <ItemCard image={bugIcon} caption={`${numberOfBugsAvailable}/${totalBugs}`} />
+        </Link>
       </section>
     </main>
   );

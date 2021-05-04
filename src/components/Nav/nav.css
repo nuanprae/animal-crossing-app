@@ -1,13 +1,10 @@
 .nav {
   display: flex;
-  flex-direction: column;
   gap: 1em;
 }
 .link {
   text-decoration: none;
   padding: 1em;
   text-align: center;
-  background-color: #2d6895;
-  color: #fff;
-  border-radius: 10px;
+  color: #2d6895;
 }
