@@ -8,7 +8,7 @@ const TextBlock = (props) => {
 
 TextBlock.propTypes = {
   className: PropTypes.string,
-  text: PropTypes.string,
+  text: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 export default TextBlock;

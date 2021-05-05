@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import ItemCard from '../ItemCard/ItemCard';
 
 import './item-cards-grid.css';
@@ -5,7 +6,7 @@ import './item-cards-grid.css';
 const ItemCardsGrid = (props) => {
   return (
     <section className="item-cards-grid">
-      {props.items?.map((item) => {
+      {props.items.map((item) => {
         return (
           <ItemCard
             key={item['file-name']}
@@ -18,6 +19,10 @@ const ItemCardsGrid = (props) => {
       })}
     </section>
   );
+};
+ItemCardsGrid.propTypes = {
+  items: PropTypes.array,
+  language: PropTypes.string,
 };
 
 export default ItemCardsGrid;

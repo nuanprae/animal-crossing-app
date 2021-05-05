@@ -19,6 +19,7 @@ const DropdownButton = (props) => {
 DropdownButton.propTypes = {
   className: PropTypes.string,
   label: PropTypes.string,
+  onChange: PropTypes.func,
   options: PropTypes.array,
 };
 

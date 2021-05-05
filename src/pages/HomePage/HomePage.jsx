@@ -21,6 +21,10 @@ const HomePage = (props) => {
   const [totalBugs, setTotalBugs] = useState(0);
 
   useEffect(() => {
+    // setNumberOfFishAvailable(data.length);
+    // setTotalFish(Object.values(fullData).length);
+    // setFishIcon(data[0].icon_uri);
+
     const fetchFishData = async () => {
       try {
         const apiCallResponse = await axios.get('https://acnhapi.com/v1/fish/');
@@ -56,7 +60,6 @@ const HomePage = (props) => {
         console.error(error);
       }
     };
-
     fetchFishData();
     fetchSeaCreaturesData();
     fetchBugsData();

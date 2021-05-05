@@ -16,9 +16,11 @@ const ItemCard = (props) => {
 };
 
 ItemCard.propTypes = {
-  image: PropTypes.string,
   alt: PropTypes.string,
-  caption: PropTypes.string,
+  className: PropTypes.string,
+  caption1: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  caption2: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  image: PropTypes.string,
 };
 
 export default ItemCard;
