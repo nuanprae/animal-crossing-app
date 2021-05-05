@@ -41,15 +41,17 @@ const App = () => {
         date={`${dayNumber} ${monthName}`}
         time={currentTime}
       />
-      <Router>
-        <Nav className="nav" />
-        <Switch className="page">
-          <Route exact path="/" component={HomePage}></Route>
-          <Route path="/fish" component={FishPage}></Route>
-          <Route path="/sea-creatures" component={SeaCreaturesPage}></Route>
-          <Route path="/bugs" component={BugsPage}></Route>
-        </Switch>
-      </Router>
+      <section className="tabs">
+        <Router>
+          <Nav className="nav" />
+          <Switch>
+            <Route exact path="/" component={HomePage}></Route>
+            <Route path="/fish" component={FishPage}></Route>
+            <Route path="/sea-creatures" component={SeaCreaturesPage}></Route>
+            <Route path="/bugs" component={BugsPage}></Route>
+          </Switch>
+        </Router>
+      </section>
     </section>
   );
 };

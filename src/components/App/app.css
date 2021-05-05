@@ -3,7 +3,7 @@
   grid-template-columns: 1fr;
   grid-template-rows: max-content max-content 2fr;
   gap: 1em;
-  background-color: #e9f4eb;
+  background-color: #fff;
   min-height: 100vh;
 }
 .header {
@@ -11,9 +11,9 @@
 }
 .nav {
   grid-row: 2;
-  justify-self: center;
+  justify-self: start;
 }
-.page {
+.pages {
   margin: 1em;
   grid-row: 3;
 }

@@ -1,13 +1,26 @@
 .nav {
   display: flex;
-  gap: 1em;
 }
 .link {
   text-decoration: none;
   padding: 1em;
   text-align: center;
   color: #2d6895;
+  background-color: #fff;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-left: 1px solid #9cd2df;
+  border-top: 8px solid #9cd2df;
+  width: 25%;
 }
+.link:hover {
+  background-color: #cde2e8;
+}
+
 .active {
-  border-bottom: 2px solid #2d6895;
+  border-top: 8px solid #2d6895;
+  background-color: #e9f4eb;
+}
+.active:hover {
+  background-color: #e9f4eb;
 }
