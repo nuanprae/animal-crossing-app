@@ -1,5 +1,6 @@
 .nav {
   display: flex;
+  margin: 0 4em;
 }
 .link {
   text-decoration: none;
@@ -9,8 +10,8 @@
   background-color: #fff;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  border-left: 1px solid #9cd2df;
-  border-top: 8px solid #9cd2df;
+  border-left: 1px solid #fddf6e;
+  border-top: 8px solid #fddf6e;
   width: 25%;
 }
 .link:hover {

@@ -4,10 +4,13 @@
   gap: 1em;
   background-color: #e9f4eb;
   padding-bottom: 3em;
+  min-height: 100vh;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
 }
 .sort {
   display: flex;
   gap: 1em;
-  justify-content: space-between;
+  justify-content: flex-end;
   margin: 2em;
 }

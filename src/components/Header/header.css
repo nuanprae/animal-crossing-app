@@ -1,9 +1,9 @@
 .header {
   display: flex;
-  flex-direction: column;
   gap: 0.5em;
+  padding: 2em 4em 1em 4em;
+  justify-content: space-between;
   background-color: #a8d8a8;
-  padding: 1em;
 }
 .header-text {
   text-align: center;

@@ -50,7 +50,6 @@ const FishPage = () => {
           options={['English', 'Japanese']}
         />
       </section>
-
       <ItemCardsGrid items={items} language={selectedLanguage} />
     </main>
   );
