@@ -13,7 +13,7 @@ const useFetchWeatherData = () => {
           const latitude = position.coords.latitude;
           const longitude = position.coords.longitude;
           const apiCallResponse = await axios.get(
-            `https://fcc-weather-api.glitch.me/api/current?lat=${latitude}&lon=${longitude}`,
+            `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${process.env.REACT_APP_WEATHER_API_KEY}`,
           );
           const weatherData = apiCallResponse.data;
           setCity(weatherData.name);

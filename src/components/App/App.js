@@ -36,7 +36,7 @@ const App = () => {
       <Header
         className="header"
         location={city}
-        image={weatherIcon}
+        image={`https://openweathermap.org/img/wn/${weatherIcon}@2x.png`}
         alt={weatherDescription}
         date={`${dayNumber} ${monthName}`}
         time={currentTime}
