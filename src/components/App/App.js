@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Header from '../Header/Header';
@@ -7,29 +6,15 @@ import Nav from '../../components/Nav/Nav';
 import FishPage from '../../pages/FishPage/FishPage';
 import SeaCreaturesPage from '../../pages/SeaCreaturesPage/SeaCreaturesPage';
 import BugsPage from '../../pages/BugsPage/BugsPage';
-import * as utils from '../../utils';
 
 import './app.css';
 
+import useGetDateAndTime from '../../hooks/useGetDateAndTime';
 import useFetchWeatherData from '../../hooks/useFetchWeatherData';
 
-const dayNumber = utils.getDayNumber();
-const monthName = utils.getMonthName();
-const timeAtLoad = utils.getTime();
-
 const App = () => {
-  const [currentTime, setCurrentTime] = useState(timeAtLoad);
-
+  const { dayNumber, monthName, currentTime } = useGetDateAndTime();
   const { city, weatherIcon, weatherDescription } = useFetchWeatherData();
-
-  useEffect(() => {
-    const intervalID = setInterval(() => {
-      setCurrentTime(utils.getTime());
-    }, 1000);
-    return () => {
-      clearInterval(intervalID);
-    };
-  }, []);
 
   return (
     <section className="app">
