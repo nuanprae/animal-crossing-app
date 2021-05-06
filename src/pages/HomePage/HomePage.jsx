@@ -1,13 +1,22 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
 import TextBlock from '../../components/TextBlock/TextBlock';
 import ItemCard from '../../components/ItemCard/ItemCard';
 
-import { getDailyAcnhResults } from '../../utils';
-
 import './home-page.css';
+import useFetchAllCreatures from '../../hooks/useFetchAllCreatures';
 
 const HomePage = (props) => {
+  const {
+    completeFishData,
+    completeSeaCreaturesData,
+    completeBugsData,
+    dailyFishData,
+    dailySeaCreaturesData,
+    dailyBugsData,
+    isLoading,
+    hasError,
+  } = useFetchAllCreatures();
+
   const [fishIcon, setFishIcon] = useState('');
   const [numberOfFishAvailable, setNumberOfFishAvailable] = useState(0);
   const [totalFish, setTotalFish] = useState(0);
@@ -21,49 +30,33 @@ const HomePage = (props) => {
   const [totalBugs, setTotalBugs] = useState(0);
 
   useEffect(() => {
-    // setNumberOfFishAvailable(data.length);
-    // setTotalFish(Object.values(fullData).length);
-    // setFishIcon(data[0].icon_uri);
+    setFishIcon(dailyFishData[0]?.icon_uri);
+    setNumberOfFishAvailable(dailyFishData?.length);
+    setTotalFish(Object.values(completeFishData)?.length);
 
-    const fetchFishData = async () => {
-      try {
-        const apiCallResponse = await axios.get('https://acnhapi.com/v1/fish/');
-        const dailyFishResults = getDailyAcnhResults(apiCallResponse.data);
-        setFishIcon(dailyFishResults[0].icon_uri);
-        setNumberOfFishAvailable(dailyFishResults.length);
-        setTotalFish(Object.values(apiCallResponse.data).length);
-      } catch (error) {
-        console.error(error);
-      }
-    };
+    setSeaCreatureIcon(dailySeaCreaturesData[0]?.icon_uri);
+    setNumberOfSeaCreaturesAvailable(dailySeaCreaturesData?.length);
+    setTotalSeaCreatures(Object.values(completeSeaCreaturesData)?.length);
 
-    const fetchSeaCreaturesData = async () => {
-      try {
-        const apiCallResponse = await axios.get('https://acnhapi.com/v1/sea/');
-        const dailySeaCreaturesResults = getDailyAcnhResults(apiCallResponse.data);
-        setSeaCreatureIcon(dailySeaCreaturesResults[0].icon_uri);
-        setNumberOfSeaCreaturesAvailable(dailySeaCreaturesResults.length);
-        setTotalSeaCreatures(Object.values(apiCallResponse.data).length);
-      } catch (error) {
-        console.error(error);
-      }
-    };
+    setBugIcon(dailyBugsData[0]?.icon_uri);
+    setNumberOfBugsAvailable(dailyBugsData?.length);
+    setTotalBugs(Object.values(completeBugsData)?.length);
+  }, [
+    completeFishData,
+    dailyFishData,
+    completeSeaCreaturesData,
+    dailySeaCreaturesData,
+    completeBugsData,
+    dailyBugsData,
+  ]);
 
-    const fetchBugsData = async () => {
-      try {
-        const apiCallResponse = await axios.get('https://acnhapi.com/v1/bugs/');
-        const dailyBugsResults = getDailyAcnhResults(apiCallResponse.data);
-        setBugIcon(dailyBugsResults[0].icon_uri);
-        setNumberOfBugsAvailable(dailyBugsResults.length);
-        setTotalBugs(Object.values(apiCallResponse.data).length);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchFishData();
-    fetchSeaCreaturesData();
-    fetchBugsData();
-  }, []);
+  if (isLoading) {
+    return <h2>Loading data...please wait</h2>;
+  }
+
+  if (hasError) {
+    return <h2>Sorry, something went wrong...</h2>;
+  }
 
   return (
     <main className={`home-page ${props.className}`}>

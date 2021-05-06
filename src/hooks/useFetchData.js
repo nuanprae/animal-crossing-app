@@ -3,7 +3,7 @@ import axios from 'axios';
 import { getDailyAcnhResults } from '../utils';
 
 const useFetchData = (apiEndPoint) => {
-  const [fullData, setFullData] = useState({});
+  const [completeData, setCompleteData] = useState({});
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(null);
@@ -13,7 +13,7 @@ const useFetchData = (apiEndPoint) => {
       try {
         const apiCallResponse = await axios.get(apiEndPoint);
         const dailyResults = getDailyAcnhResults(apiCallResponse.data);
-        setFullData(apiCallResponse.data);
+        setCompleteData(apiCallResponse.data);
         setData(dailyResults);
         setIsLoading(false);
       } catch (error) {
@@ -25,7 +25,7 @@ const useFetchData = (apiEndPoint) => {
   }, [apiEndPoint]);
 
   const fetchedDataState = {
-    fullData: fullData,
+    completeData: completeData,
     data: data,
     isLoading: isLoading,
     hasError: hasError,
