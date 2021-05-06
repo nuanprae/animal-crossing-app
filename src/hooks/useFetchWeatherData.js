@@ -25,7 +25,7 @@ const useFetchWeatherData = () => {
       }
     };
     fetchWeatherData();
-  }, [city, weatherIcon, weatherDescription]);
+  }, []);
   return { city, weatherIcon, weatherDescription };
 };
 
