@@ -17,7 +17,7 @@ const useFetchWeatherData = () => {
           );
           const weatherData = apiCallResponse.data;
           setCity(weatherData.name);
-          setWeatherIcon(weatherData.weather[0].icon);
+          setWeatherIcon(`https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`);
           setWeatherDescription(weatherData.weather[0].description);
         });
       } catch (error) {
