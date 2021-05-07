@@ -2,11 +2,9 @@ import playButtonSvg from '../../assets/play-button.svg';
 
 import './play-button.css';
 
-const PlayButton = () => {
-  let audio = new Audio('https://acnhapi.com/v1/hourly/1');
-
+const PlayButton = (prop) => {
   return (
-    <button className="play-button" onClick={() => audio.play()}>
+    <button className="play-button" onClick={prop.onClick}>
       <img src={playButtonSvg} alt="play-button" />
     </button>
   );

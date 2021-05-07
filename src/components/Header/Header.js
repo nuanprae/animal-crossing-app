@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
-import PlayButton from '../PlayButton/PlayButton';
+import MusicPlayer from '../MusicPlayer/MusicPlayer';
+// import PlayButton from '../PlayButton/PlayButton';
 import './header.css';
 
 const Header = (props) => {
@@ -11,7 +12,7 @@ const Header = (props) => {
         <img className="weather-icon" src={props.image} alt={props.alt} />
         <h4>{props.date}</h4>
         <h4>{props.time}</h4>
-        <PlayButton />
+        <MusicPlayer />
       </section>
     </header>
   );
