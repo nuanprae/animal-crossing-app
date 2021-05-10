@@ -4,24 +4,51 @@ import pauseButtonSvg from '../../assets/pause-button.svg';
 
 import './music-player.css';
 import useGetDateAndTime from '../../hooks/useGetDateAndTime';
+import useFetchWeatherData from '../../hooks/useFetchWeatherData';
+import useFetchAudio from '../../hooks/useFetchAudio';
 
 const MusicPlayer = () => {
+  const { audioList } = useFetchAudio();
   const { currentTime } = useGetDateAndTime();
+  const { weatherID } = useFetchWeatherData();
   const [audio, setAudio] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
+  const time = currentTime.slice(0, 2); // TODO: check for change in time every hour
+
   useEffect(() => {
-    // setAudio(new Audio('https://acnhapi.com/v1/hourly/15'));
-    const findCurrentAudio = () => {
-      console.log(currentTime.slice(0, 2));
-      if (currentTime.slice(0, 2) === '14') {
-        setAudio(new Audio('https://acnhapi.com/v1/hourly/14'));
-      } else if (currentTime.slice(0, 2) === '15') {
-        console.log('not working');
-      }
+    if (weatherID >= 800 && weatherID <= 899) {
+      const currentAudio = audioList?.filter(
+        (obj) => obj['file-name'] === `BGM_24Hour_${time}_Sunny`,
+      );
+      const audioUrl = currentAudio[0]['music_uri'];
+      setAudio(new Audio(audioUrl));
+    } else if (weatherID >= 600 && weatherID <= 699) {
+      const currentAudio = audioList?.filter(
+        (obj) => obj['file-name'] === `BGM_24Hour_${time}_Snowy`,
+      );
+      const audioUrl = currentAudio[0]['music_uri'];
+      setAudio(new Audio(audioUrl));
+    } else if (weatherID >= 200 && weatherID <= 599) {
+      const currentAudio = audioList?.filter(
+        (obj) => obj['file-name'] === `BGM_24Hour_${time}_Rainy`,
+      );
+      const audioUrl = currentAudio[0]['music_uri'];
+      setAudio(new Audio(audioUrl));
+    }
+  }, [audioList, time, weatherID]);
+
+  useEffect(() => {
+    if (isPlaying) {
+      audio.loop = true;
+      audio?.play();
+    } else if (!isPlaying) {
+      audio?.pause();
+    }
+    return () => {
+      audio?.pause();
     };
-    findCurrentAudio();
-  }, [currentTime]);
+  }, [isPlaying, audio]);
 
   const toggle = () => {
     if (isPlaying) {
@@ -30,13 +57,6 @@ const MusicPlayer = () => {
       setIsPlaying(true);
     }
   };
-  useEffect(() => {
-    if (isPlaying) {
-      audio?.play();
-    } else if (!isPlaying) {
-      audio?.pause();
-    }
-  }, [isPlaying, audio]);
 
   return (
     <section className="music-player">

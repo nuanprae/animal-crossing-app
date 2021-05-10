@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import MusicPlayer from '../MusicPlayer/MusicPlayer';
-// import PlayButton from '../PlayButton/PlayButton';
 import './header.css';
 
 const Header = (props) => {

@@ -15,6 +15,10 @@ const useFetchAllCreatures = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(null);
 
+  // const fishData = useFetchData('https://acnhapi.com/v1/fish/');
+  // fishData.data
+  // const { data, isLoading, hasError } = useFetchData('https://acnhapi.com/v1/sea/');
+
   useEffect(() => {
     const fetchFishData = async () => {
       try {
