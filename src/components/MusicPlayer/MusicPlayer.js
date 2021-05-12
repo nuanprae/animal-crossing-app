@@ -13,35 +13,73 @@ const MusicPlayer = () => {
   const { weatherID } = useFetchWeatherData();
   const [audio, setAudio] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [hourlyID, setHourlyID] = useState(currentTime.slice(0, 2));
+  // const [seconds, setSeconds] = useState(new Date().getSeconds());
+  // const [minutes, setMinutes] = useState(new Date().getMinutes());
 
-  const time = currentTime.slice(0, 2); // TODO: check for change in time every hour
+  // change audio every hour
+  const date = new Date();
+  const minutes = date.getMinutes();
+  useEffect(() => {
+    if (minutes === 0) {
+      setHourlyID(currentTime.slice(0, 2));
+    }
+  }, [minutes]);
+
+  // change audio every minute
+  // const date = new Date();
+  // const seconds = date.getSeconds();
+  // useEffect(() => {
+  //   if (seconds === 0) {
+  //     setHourlyID(currentTime.slice(3, 5));
+  //   }
+  // }, [seconds]);
+
+  // change audio every hour
+  // useEffect(() => {
+  //   console.log(minutes);
+  //   const intervalID = setInterval(() => {
+  //     setHourlyID('15');
+  //     setMinutes(0);
+  //     console.log(minutes);
+  //     if (minutes === 0) {
+  //       setHourlyID('16');
+  //       console.log(minutes);
+  //     }
+  //   }, (60 - minutes) * 60000);
+  //   return () => {
+  //     clearInterval(intervalID);
+  //   };
+  // }, [minutes]);
 
   useEffect(() => {
     if (weatherID >= 800 && weatherID <= 899) {
       const currentAudio = audioList?.filter(
-        (obj) => obj['file-name'] === `BGM_24Hour_${time}_Sunny`,
+        (obj) => obj['file-name'] === `BGM_24Hour_${hourlyID}_Sunny`,
       );
       const audioUrl = currentAudio[0]['music_uri'];
       setAudio(new Audio(audioUrl));
     } else if (weatherID >= 600 && weatherID <= 699) {
       const currentAudio = audioList?.filter(
-        (obj) => obj['file-name'] === `BGM_24Hour_${time}_Snowy`,
+        (obj) => obj['file-name'] === `BGM_24Hour_${hourlyID}_Snowy`,
       );
       const audioUrl = currentAudio[0]['music_uri'];
       setAudio(new Audio(audioUrl));
     } else if (weatherID >= 200 && weatherID <= 599) {
       const currentAudio = audioList?.filter(
-        (obj) => obj['file-name'] === `BGM_24Hour_${time}_Rainy`,
+        (obj) => obj['file-name'] === `BGM_24Hour_${hourlyID}_Rainy`,
       );
       const audioUrl = currentAudio[0]['music_uri'];
       setAudio(new Audio(audioUrl));
     }
-  }, [audioList, time, weatherID]);
+  }, [audioList, hourlyID, weatherID]);
 
   useEffect(() => {
     if (isPlaying) {
-      audio.loop = true;
       audio?.play();
+      audio.loop = true;
+      console.log(audio);
+      // audio.loop = true;
     } else if (!isPlaying) {
       audio?.pause();
     }
