@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import ItemCard from '../ItemCard/ItemCard';
+import moneyBagIcon from '../../assets/money-bag-icon.png';
 
 import './item-cards-grid.css';
 
@@ -14,6 +15,7 @@ const ItemCardsGrid = (props) => {
             alt={item.name[`${props.language}`]}
             caption1={item.name[`${props.language}`]}
             caption2={item.price}
+            moneyIcon={<img className="money-bag-icon" src={moneyBagIcon} alt={'money bag'} />}
           ></ItemCard>
         );
       })}
