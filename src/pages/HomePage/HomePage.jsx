@@ -6,16 +6,7 @@ import './home-page.css';
 import useFetchAllCreatures from '../../hooks/useFetchAllCreatures';
 
 const HomePage = (props) => {
-  const {
-    completeFishData,
-    completeSeaCreaturesData,
-    completeBugsData,
-    dailyFishData,
-    dailySeaCreaturesData,
-    dailyBugsData,
-    isLoading,
-    hasError,
-  } = useFetchAllCreatures();
+  const { fishData, seaCreaturesData, bugsData } = useFetchAllCreatures();
 
   const [fishIcon, setFishIcon] = useState('');
   const [numberOfFishAvailable, setNumberOfFishAvailable] = useState(0);
@@ -30,31 +21,24 @@ const HomePage = (props) => {
   const [totalBugs, setTotalBugs] = useState(0);
 
   useEffect(() => {
-    setFishIcon(dailyFishData[0]?.icon_uri);
-    setNumberOfFishAvailable(dailyFishData?.length);
-    setTotalFish(Object.values(completeFishData)?.length);
+    setFishIcon(fishData.data[0]?.icon_uri);
+    setNumberOfFishAvailable(fishData.data?.length);
+    setTotalFish(Object.values(fishData.completeData)?.length);
 
-    setSeaCreatureIcon(dailySeaCreaturesData[0]?.icon_uri);
-    setNumberOfSeaCreaturesAvailable(dailySeaCreaturesData?.length);
-    setTotalSeaCreatures(Object.values(completeSeaCreaturesData)?.length);
+    setSeaCreatureIcon(seaCreaturesData.data[0]?.icon_uri);
+    setNumberOfSeaCreaturesAvailable(seaCreaturesData.data?.length);
+    setTotalSeaCreatures(Object.values(seaCreaturesData.completeData)?.length);
 
-    setBugIcon(dailyBugsData[0]?.icon_uri);
-    setNumberOfBugsAvailable(dailyBugsData?.length);
-    setTotalBugs(Object.values(completeBugsData)?.length);
-  }, [
-    completeFishData,
-    dailyFishData,
-    completeSeaCreaturesData,
-    dailySeaCreaturesData,
-    completeBugsData,
-    dailyBugsData,
-  ]);
+    setBugIcon(bugsData.data[0]?.icon_uri);
+    setNumberOfBugsAvailable(bugsData.data?.length);
+    setTotalBugs(Object.values(bugsData.completeData)?.length);
+  }, [fishData, seaCreaturesData, bugsData]);
 
-  if (isLoading) {
+  if (fishData.isLoading || seaCreaturesData.isLoading || bugsData.isLoading) {
     return <h2>Loading data...please wait</h2>;
   }
 
-  if (hasError) {
+  if (fishData.hasError || seaCreaturesData.hasError || bugsData.hasError) {
     return <h2>Sorry, something went wrong...</h2>;
   }
 

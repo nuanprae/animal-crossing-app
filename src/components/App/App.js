@@ -3,9 +3,9 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Header from '../Header/Header';
 import HomePage from '../../pages/HomePage/HomePage';
 import Nav from '../../components/Nav/Nav';
-import FishPage from '../../pages/FishPage/FishPage';
-import SeaCreaturesPage from '../../pages/SeaCreaturesPage/SeaCreaturesPage';
-import BugsPage from '../../pages/BugsPage/BugsPage';
+// import FishPage from '../../pages/FishPage/FishPage';
+// import SeaCreaturesPage from '../../pages/SeaCreaturesPage/SeaCreaturesPage';
+// import BugsPage from '../../pages/BugsPage/BugsPage';
 
 import './app.css';
 
@@ -31,9 +31,9 @@ const App = () => {
           <Nav className="nav" />
           <Switch>
             <Route exact path="/" component={HomePage}></Route>
-            <Route path="/fish" component={FishPage}></Route>
+            {/* <Route path="/fish" component={FishPage}></Route>
             <Route path="/sea-creatures" component={SeaCreaturesPage}></Route>
-            <Route path="/bugs" component={BugsPage}></Route>
+            <Route path="/bugs" component={BugsPage}></Route> */}
           </Switch>
         </Router>
       </section>
