@@ -24,6 +24,7 @@ const MusicPlayer = () => {
     if (minutes === 0) {
       setHourlyID(currentTime.slice(0, 2));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [minutes]);
 
   // change audio every minute

@@ -24,14 +24,12 @@ const useFetchData = (apiEndPoint) => {
     fetchData();
   }, [apiEndPoint]);
 
-  const fetchedDataState = {
+  return {
     completeData: completeData,
     data: data,
     isLoading: isLoading,
     hasError: hasError,
   };
-
-  return fetchedDataState;
 };
 
 export default useFetchData;
