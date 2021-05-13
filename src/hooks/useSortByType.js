@@ -12,7 +12,7 @@ const useSortByType = (state, setState, sortByPrice, type) => {
       });
     } else {
       setState(() => {
-        const filtered = state.filter((obj) => obj.availability[type] === event.target.value);
+        const filtered = state?.filter((obj) => obj.availability[type] === event.target.value);
         if (sortByPrice === 'Highest price') {
           return sortDescendingOrder(filtered, 'price');
         } else if (sortByPrice === 'Lowest price') {

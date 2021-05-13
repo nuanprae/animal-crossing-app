@@ -4,7 +4,7 @@ import { getDailyAcnhResults } from '../utils';
 
 const useFetchData = (apiEndPoint) => {
   const [completeData, setCompleteData] = useState({});
-  const [data, setData] = useState([]);
+  const [dailyData, setDailyData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(null);
 
@@ -14,7 +14,7 @@ const useFetchData = (apiEndPoint) => {
         const apiCallResponse = await axios.get(apiEndPoint);
         const dailyResults = getDailyAcnhResults(apiCallResponse.data);
         setCompleteData(apiCallResponse.data);
-        setData(dailyResults);
+        setDailyData(dailyResults);
         setIsLoading(false);
       } catch (error) {
         setIsLoading(false);
@@ -26,7 +26,7 @@ const useFetchData = (apiEndPoint) => {
 
   return {
     completeData: completeData,
-    data: data,
+    dailyData: dailyData,
     isLoading: isLoading,
     hasError: hasError,
   };

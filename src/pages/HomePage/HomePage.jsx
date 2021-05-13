@@ -21,15 +21,15 @@ const HomePage = (props) => {
   const [totalBugs, setTotalBugs] = useState(0);
 
   useEffect(() => {
-    setFishIcon(fishData.data[0]?.icon_uri);
+    setFishIcon(fishData.dailyData[0]?.icon_uri);
     setNumberOfFishAvailable(fishData.data?.length);
     setTotalFish(Object.values(fishData.completeData)?.length);
 
-    setSeaCreatureIcon(seaCreaturesData.data[0]?.icon_uri);
+    setSeaCreatureIcon(seaCreaturesData.dailyData[0]?.icon_uri);
     setNumberOfSeaCreaturesAvailable(seaCreaturesData.data?.length);
     setTotalSeaCreatures(Object.values(seaCreaturesData.completeData)?.length);
 
-    setBugIcon(bugsData.data[0]?.icon_uri);
+    setBugIcon(bugsData.dailyData[0]?.icon_uri);
     setNumberOfBugsAvailable(bugsData.data?.length);
     setTotalBugs(Object.values(bugsData.completeData)?.length);
   }, [fishData, seaCreaturesData, bugsData]);
@@ -38,7 +38,7 @@ const HomePage = (props) => {
     return <h2>Loading data...please wait</h2>;
   }
 
-  if (fishData.hasError || seaCreaturesData.hasError || bugsData.hasError) {
+  if (fishData.isError || seaCreaturesData.isError || bugsData.isError) {
     return <h2>Sorry, something went wrong...</h2>;
   }
 

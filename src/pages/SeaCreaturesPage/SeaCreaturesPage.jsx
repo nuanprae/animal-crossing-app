@@ -14,24 +14,24 @@ const SeaCreaturesPage = () => {
   const [selectedLanguage, setSelectedLanguage] = useState('name-EUen');
   const [types, setTypes] = useState([]);
 
-  const { data, isLoading, hasError } = useFetchData('https://acnhapi.com/v1/sea/');
-  const { handleSortByPrice, sortByPrice } = useSortByPrice(items, setItems);
-  const { handleSortBySpeedType } = useSortBySpeedType(data, setItems, sortByPrice);
+  const { dailyData, isLoading, isError } = useFetchData('https://acnhapi.com/v1/sea/');
   const { handleSelectLanguage } = useSelectLanguage(setSelectedLanguage);
+  const { handleSortByPrice, sortByPrice } = useSortByPrice(items, setItems);
+  const { handleSortBySpeedType } = useSortBySpeedType(dailyData, setItems, sortByPrice);
 
   useEffect(() => {
-    setItems(sortDescendingOrder(data, 'price'));
+    setItems(sortDescendingOrder(dailyData, 'price'));
     setTypes(() => {
-      const speedTypes = new Set(data.map((obj) => obj.speed));
+      const speedTypes = new Set(dailyData.map((obj) => obj.speed));
       return ['All', ...speedTypes];
     });
-  }, [data]);
+  }, [dailyData]);
 
   if (isLoading) {
     return <h2>Loading data...please wait</h2>;
   }
 
-  if (hasError) {
+  if (isError) {
     return <h2>Sorry, something went wrong...</h2>;
   }
 

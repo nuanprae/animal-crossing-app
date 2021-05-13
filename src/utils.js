@@ -25,13 +25,13 @@ export const getTime = () => {
 export const getDailyAcnhResults = (data) => {
   const results = Object.values(data);
   const monthNumber = getMonthNumber();
-  return results.filter((obj) => obj.availability['month-array-northern'].includes(monthNumber));
+  return results?.filter((obj) => obj.availability['month-array-northern'].includes(monthNumber));
 };
 
 export const sortDescendingOrder = (array, type) => {
-  return [...array].sort((a, b) => b[type] - a[type]);
+  return [...array]?.sort((a, b) => b[type] - a[type]);
 };
 
 export const sortAscendingOrder = (array, type) => {
-  return [...array].sort((a, b) => a[type] - b[type]);
+  return [...array]?.sort((a, b) => a[type] - b[type]);
 };

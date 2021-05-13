@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 import Header from '../Header/Header';
-import HomePage from '../../pages/HomePage/HomePage';
+// import HomePage from '../../pages/HomePage/HomePage';
 import Nav from '../../components/Nav/Nav';
 import FishPage from '../../pages/FishPage/FishPage';
 // import SeaCreaturesPage from '../../pages/SeaCreaturesPage/SeaCreaturesPage';
@@ -34,10 +34,10 @@ const App = () => {
           <Router>
             <Nav className="nav" />
             <Switch>
-              <Route exact path="/" component={HomePage}></Route>
+              {/* <Route exact path="/" component={HomePage}></Route> */}
               <Route path="/fish" component={FishPage}></Route>
               {/* <Route path="/sea-creatures" component={SeaCreaturesPage}></Route>
-            <Route path="/bugs" component={BugsPage}></Route> */}
+              <Route path="/bugs" component={BugsPage}></Route> */}
             </Switch>
           </Router>
         </QueryClientProvider>
