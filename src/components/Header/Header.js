@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
+
 import MusicPlayer from '../MusicPlayer/MusicPlayer';
+
 import './header.css';
 
 const Header = (props) => {
@@ -18,11 +20,12 @@ const Header = (props) => {
 };
 
 Header.propTypes = {
-  className: PropTypes.string,
-  location: PropTypes.string,
-  image: PropTypes.string,
   alt: PropTypes.string,
+  className: PropTypes.string,
   date: PropTypes.string,
+  image: PropTypes.string,
+  location: PropTypes.string,
   time: PropTypes.string,
 };
+
 export default Header;

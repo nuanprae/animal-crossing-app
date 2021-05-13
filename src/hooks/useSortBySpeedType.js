@@ -22,6 +22,7 @@ const useSortBySpeedType = (state, setState, sortByPrice) => {
       });
     }
   };
+
   return { handleSortBySpeedType };
 };
 

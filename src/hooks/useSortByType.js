@@ -21,6 +21,7 @@ const useSortByType = (state, setState, sortByPrice, type) => {
       });
     }
   };
+
   return { handleSortByType };
 };
 

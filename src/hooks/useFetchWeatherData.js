@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useState, useEffect } from 'react';
 
 const useFetchWeatherData = () => {
   const [city, setCity] = useState('');
@@ -28,6 +28,8 @@ const useFetchWeatherData = () => {
     };
     fetchWeatherData();
   }, []);
+
   return { city, weatherIcon, weatherID, weatherDescription };
 };
+
 export default useFetchWeatherData;

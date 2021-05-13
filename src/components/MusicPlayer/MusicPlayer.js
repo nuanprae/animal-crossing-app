@@ -1,19 +1,22 @@
 import { useState, useEffect } from 'react';
-import playButtonSvg from '../../assets/play-button.svg';
-import pauseButtonSvg from '../../assets/pause-button.svg';
+
+import PauseButton from '../../components/PauseButton/PauseButton';
+import PlayButton from '../../components/PlayButton/PlayButton';
 
 import './music-player.css';
-import useGetDateAndTime from '../../hooks/useGetDateAndTime';
-import useFetchWeatherData from '../../hooks/useFetchWeatherData';
+
 import useFetchAudio from '../../hooks/useFetchAudio';
+import useFetchWeatherData from '../../hooks/useFetchWeatherData';
+import useGetDateAndTime from '../../hooks/useGetDateAndTime';
 
 const MusicPlayer = () => {
   const { audioList } = useFetchAudio();
   const { currentTime } = useGetDateAndTime();
   const { weatherID } = useFetchWeatherData();
+
   const [audio, setAudio] = useState(null);
-  const [isPlaying, setIsPlaying] = useState(false);
   const [hourlyID, setHourlyID] = useState(currentTime.slice(0, 2));
+  const [isPlaying, setIsPlaying] = useState(false);
   // const [seconds, setSeconds] = useState(new Date().getSeconds());
   // const [minutes, setMinutes] = useState(new Date().getMinutes());
 
@@ -99,15 +102,7 @@ const MusicPlayer = () => {
 
   return (
     <section className="music-player">
-      {isPlaying ? (
-        <button className="button" onClick={toggle}>
-          <img src={pauseButtonSvg} alt="pause-button" />
-        </button>
-      ) : (
-        <button className="button" onClick={toggle}>
-          <img src={playButtonSvg} alt="play-button" />
-        </button>
-      )}
+      {isPlaying ? <PauseButton onClick={toggle} /> : <PlayButton onClick={toggle} />}
     </section>
   );
 };

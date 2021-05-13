@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useEffect, useState } from 'react';
 
 const useFetchAudio = () => {
   const [audioList, setAudioList] = useState(null);
@@ -15,6 +15,7 @@ const useFetchAudio = () => {
     };
     fetchData();
   }, []);
+
   return {
     audioList,
   };

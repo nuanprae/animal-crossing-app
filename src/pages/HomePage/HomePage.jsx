@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
+
 import TextBlock from '../../components/TextBlock/TextBlock';
 import ItemCard from '../../components/ItemCard/ItemCard';
 
 import './home-page.css';
+
 import useFetchAllCreatures from '../../hooks/useFetchAllCreatures';
 
 const HomePage = (props) => {
@@ -22,15 +24,15 @@ const HomePage = (props) => {
 
   useEffect(() => {
     setFishIcon(fishData.dailyData[0]?.icon_uri);
-    setNumberOfFishAvailable(fishData.data?.length);
+    setNumberOfFishAvailable(fishData.dailyData?.length);
     setTotalFish(Object.values(fishData.completeData)?.length);
 
     setSeaCreatureIcon(seaCreaturesData.dailyData[0]?.icon_uri);
-    setNumberOfSeaCreaturesAvailable(seaCreaturesData.data?.length);
+    setNumberOfSeaCreaturesAvailable(seaCreaturesData.dailyData?.length);
     setTotalSeaCreatures(Object.values(seaCreaturesData.completeData)?.length);
 
     setBugIcon(bugsData.dailyData[0]?.icon_uri);
-    setNumberOfBugsAvailable(bugsData.data?.length);
+    setNumberOfBugsAvailable(bugsData.dailyData?.length);
     setTotalBugs(Object.values(bugsData.completeData)?.length);
   }, [fishData, seaCreaturesData, bugsData]);
 
@@ -47,19 +49,19 @@ const HomePage = (props) => {
       <TextBlock className={'text-block'} text={'Available Today'} />
       <section className={'item-cards'}>
         <ItemCard
-          image={fishIcon}
           caption1={'fish'}
           caption2={`${numberOfFishAvailable} out of ${totalFish}`}
+          image={fishIcon}
         />
         <ItemCard
-          image={seaCreatureIcon}
           caption1={'sea creatures'}
           caption2={`${numberOfSeaCreaturesAvailable} out of ${totalSeaCreatures}`}
+          image={seaCreatureIcon}
         />
         <ItemCard
-          image={bugIcon}
           caption1={'bugs'}
           caption2={`${numberOfBugsAvailable} out of ${totalBugs}`}
+          image={bugIcon}
         />
       </section>
     </main>

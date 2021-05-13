@@ -28,4 +28,5 @@ const Nav = (props) => {
 Nav.propTypes = {
   className: PropTypes.string,
 };
+
 export default Nav;

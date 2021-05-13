@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+
 import ItemCard from '../ItemCard/ItemCard';
 import moneyBagIcon from '../../assets/money-bag-icon.png';
 

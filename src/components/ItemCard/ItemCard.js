@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+
 import './item-card.css';
 
 const ItemCard = (props) => {
@@ -16,10 +17,11 @@ const ItemCard = (props) => {
 
 ItemCard.propTypes = {
   alt: PropTypes.string,
-  className: PropTypes.string,
   caption1: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   caption2: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  className: PropTypes.string,
   image: PropTypes.string,
+  moneyIcon: PropTypes.object,
 };
 
 export default ItemCard;

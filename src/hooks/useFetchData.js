@@ -1,12 +1,13 @@
-import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useState, useEffect } from 'react';
+
 import { getDailyAcnhResults } from '../utils';
 
 const useFetchData = (apiEndPoint) => {
   const [completeData, setCompleteData] = useState({});
   const [dailyData, setDailyData] = useState([]);
+  const [isError, setIsError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [hasError, setHasError] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,7 +19,7 @@ const useFetchData = (apiEndPoint) => {
         setIsLoading(false);
       } catch (error) {
         setIsLoading(false);
-        setHasError(error);
+        setIsError(error);
       }
     };
     fetchData();
@@ -27,8 +28,8 @@ const useFetchData = (apiEndPoint) => {
   return {
     completeData: completeData,
     dailyData: dailyData,
+    isError: isError,
     isLoading: isLoading,
-    hasError: hasError,
   };
 };
 

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+
 import { sortAscendingOrder, sortDescendingOrder } from '../utils';
 
 const useSortByPrice = (state, setState) => {
@@ -13,6 +14,7 @@ const useSortByPrice = (state, setState) => {
       setSortByPrice(event.target.value);
     }
   };
+
   return { handleSortByPrice, sortByPrice };
 };
 

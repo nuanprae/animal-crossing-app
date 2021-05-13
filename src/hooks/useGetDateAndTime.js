@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+
 import * as utils from '../utils';
 
 const useGetDateAndTime = () => {
@@ -15,6 +16,7 @@ const useGetDateAndTime = () => {
       clearInterval(intervalID);
     };
   }, []);
+
   return { dayNumber, monthName, currentTime };
 };
 

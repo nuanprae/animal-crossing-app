@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react';
+
 import ItemCardsGrid from '../../components/ItemCardsGrid/ItemCardsGrid';
 import DropdownButton from '../../components/DropdownButton/DropdownButton';
+
 import { sortDescendingOrder } from '../../utils';
 
 import './fish-page.css';
+
 import useFetchData from '../../hooks/useFetchData';
 import useSortByPrice from '../../hooks/useSortByPrice';
 import useSortByType from '../../hooks/useSortByType';
