@@ -31,7 +31,7 @@ const App = () => {
       />
       <section className="tabs">
         <QueryClientProvider client={queryClient}>
-          <Router basename="/react">
+          <Router>
             <Nav className="nav" />
             <Switch>
               <Route path="/" component={HomePage}></Route>
