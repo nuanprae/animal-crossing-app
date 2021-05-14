@@ -25,7 +25,7 @@ const BugsPage = () => {
   useEffect(() => {
     setItems(sortDescendingOrder(dailyData, 'price'));
     setTypes(() => {
-      const rarityTypes = new Set(dailyData.map((obj) => obj.availability.rarity));
+      const rarityTypes = new Set(dailyData?.map((obj) => obj.availability.rarity));
       return ['All', ...rarityTypes];
     });
   }, [dailyData]);

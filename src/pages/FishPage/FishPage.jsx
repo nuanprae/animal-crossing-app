@@ -11,11 +11,11 @@ import useFetchData from '../../hooks/useFetchData';
 import useSortByPrice from '../../hooks/useSortByPrice';
 import useSortByType from '../../hooks/useSortByType';
 import useSelectLanguage from '../../hooks/useSelectLanguage';
-// import useFetchFish from '../../hooks/useFetchFish';
+import useFetchFish from '../../hooks/useFetchFish';
 
 const FishPage = () => {
-  // const { data } = useFetchFish();
-  // console.log(sortDescendingOrder(data?.dailyData, 'price'));
+  const { data, isLoading, isError } = useFetchFish();
+  // console.log(data?.dailyData);
   // return (
   //   <main className="page-container">
   //     <ItemCardsGrid items={data?.dailyData} />
@@ -25,24 +25,24 @@ const FishPage = () => {
   const [selectedLanguage, setSelectedLanguage] = useState('name-EUen');
   const [types, setTypes] = useState([]);
 
-  const { dailyData, isLoading, hasError } = useFetchData('https://acnhapi.com/v1/fish/');
+  // const { dailyData, isLoading, hasError } = useFetchData('https://acnhapi.com/v1/fish/');
   const { handleSortByPrice, sortByPrice } = useSortByPrice(items, setItems);
-  const { handleSortByType } = useSortByType(dailyData, setItems, sortByPrice, 'location');
+  const { handleSortByType } = useSortByType(data?.dailyData, setItems, sortByPrice, 'location');
   const { handleSelectLanguage } = useSelectLanguage(setSelectedLanguage);
 
   useEffect(() => {
-    setItems(sortDescendingOrder(dailyData, 'price'));
+    setItems(sortDescendingOrder(data?.dailyData, 'price'));
     setTypes(() => {
-      const locationTypes = new Set(dailyData?.map((obj) => obj.availability.location));
+      const locationTypes = new Set(data?.dailyData.map((obj) => obj.availability.location));
       return ['All', ...locationTypes];
     });
-  }, [dailyData]);
+  }, [data]);
 
   if (isLoading) {
     return <h2>Loading data...please wait</h2>;
   }
 
-  if (hasError) {
+  if (isError) {
     return <h2>Sorry, something went wrong...</h2>;
   }
 

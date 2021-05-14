@@ -29,9 +29,13 @@ export const getDailyAcnhResults = (data) => {
 };
 
 export const sortDescendingOrder = (array, type) => {
-  return [...array]?.sort((a, b) => b[type] - a[type]);
+  if (array) {
+    return [...array].sort((a, b) => b[type] - a[type]);
+  }
 };
 
 export const sortAscendingOrder = (array, type) => {
-  return [...array]?.sort((a, b) => a[type] - b[type]);
+  if (array) {
+    return [...array].sort((a, b) => a[type] - b[type]);
+  }
 };

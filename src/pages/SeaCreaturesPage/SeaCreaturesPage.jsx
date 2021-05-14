@@ -25,7 +25,7 @@ const SeaCreaturesPage = () => {
   useEffect(() => {
     setItems(sortDescendingOrder(dailyData, 'price'));
     setTypes(() => {
-      const speedTypes = new Set(dailyData.map((obj) => obj.speed));
+      const speedTypes = new Set(dailyData?.map((obj) => obj.speed));
       return ['All', ...speedTypes];
     });
   }, [dailyData]);

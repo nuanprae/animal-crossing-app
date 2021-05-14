@@ -5,7 +5,7 @@ import { getDailyAcnhResults } from '../utils';
 
 const useFetchData = (apiEndPoint) => {
   const [completeData, setCompleteData] = useState({});
-  const [dailyData, setDailyData] = useState([]);
+  const [dailyData, setDailyData] = useState(null);
   const [isError, setIsError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 

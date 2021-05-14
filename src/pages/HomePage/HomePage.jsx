@@ -23,17 +23,17 @@ const HomePage = (props) => {
   const [totalBugs, setTotalBugs] = useState(0);
 
   useEffect(() => {
-    setFishIcon(fishData.dailyData[0]?.icon_uri);
-    setNumberOfFishAvailable(fishData.dailyData?.length);
-    setTotalFish(Object.values(fishData.completeData)?.length);
+    setFishIcon(fishData.dailyData[0].icon_uri);
+    setNumberOfFishAvailable(fishData.dailyData.length);
+    setTotalFish(Object.values(fishData.completeData).length);
 
-    setSeaCreatureIcon(seaCreaturesData.dailyData[0]?.icon_uri);
-    setNumberOfSeaCreaturesAvailable(seaCreaturesData.dailyData?.length);
-    setTotalSeaCreatures(Object.values(seaCreaturesData.completeData)?.length);
+    setSeaCreatureIcon(seaCreaturesData.dailyData[0].icon_uri);
+    setNumberOfSeaCreaturesAvailable(seaCreaturesData.dailyData.length);
+    setTotalSeaCreatures(Object.values(seaCreaturesData.completeData).length);
 
-    setBugIcon(bugsData.dailyData[0]?.icon_uri);
-    setNumberOfBugsAvailable(bugsData.dailyData?.length);
-    setTotalBugs(Object.values(bugsData.completeData)?.length);
+    setBugIcon(bugsData.dailyData[0].icon_uri);
+    setNumberOfBugsAvailable(bugsData.dailyData.length);
+    setTotalBugs(Object.values(bugsData.completeData).length);
   }, [fishData, seaCreaturesData, bugsData]);
 
   if (fishData.isLoading || seaCreaturesData.isLoading || bugsData.isLoading) {
