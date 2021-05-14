@@ -39,11 +39,19 @@ const HomePage = (props) => {
   }, [fishData, seaCreaturesData, bugsData]);
 
   if (fishData.isLoading || seaCreaturesData.isLoading || bugsData.isLoading) {
-    return <h2>Loading data...please wait</h2>;
+    return (
+      <main className={`home-page ${props.className}`}>
+        <TextBlock className={'text-block'} text={'Loading...'} />
+      </main>
+    );
   }
 
   if (fishData.isError || seaCreaturesData.isError || bugsData.isError) {
-    return <h2>Sorry, something went wrong...</h2>;
+    return (
+      <main className={`home-page ${props.className}`}>
+        <TextBlock className={'text-block'} text={'Sorry...something went wrong'} />
+      </main>
+    );
   }
 
   return (

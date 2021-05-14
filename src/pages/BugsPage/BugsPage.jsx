@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 
 import ItemCardsGrid from '../../components/ItemCardsGrid/ItemCardsGrid';
 import DropdownButton from '../../components/DropdownButton/DropdownButton';
+import TextBlock from '../../components/TextBlock/TextBlock';
 
 import { sortAscendingOrder } from '../../utils';
 
@@ -31,11 +32,19 @@ const BugsPage = () => {
   }, [data]);
 
   if (isLoading) {
-    return <h2>Loading data...please wait</h2>;
+    return (
+      <main className="page-container">
+        ] <TextBlock className={'text-block'} text={'Loading...'} />
+      </main>
+    );
   }
 
   if (isError) {
-    return <h2>Sorry, something went wrong...</h2>;
+    return (
+      <main className="page-container">
+        <TextBlock className={'text-block'} text={'Sorry...something went wrong'} />
+      </main>
+    );
   }
 
   return (
