@@ -34,7 +34,7 @@ const App = () => {
           <Router>
             <Nav className="nav" />
             <Switch>
-              <Route path="/" component={HomePage}></Route>
+              <Route exact path="/" component={HomePage}></Route>
               <Route path="/fish" component={FishPage}></Route>
               <Route path="/sea-creatures" component={SeaCreaturesPage}></Route>
               <Route path="/bugs" component={BugsPage}></Route>
