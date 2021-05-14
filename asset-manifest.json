@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/animal-crossing-daily-report/static/css/main.8c4f648a.chunk.css",
+    "main.js": "/animal-crossing-daily-report/static/js/main.cd270a17.chunk.js",
+    "main.js.map": "/animal-crossing-daily-report/static/js/main.cd270a17.chunk.js.map",
+    "runtime-main.js": "/animal-crossing-daily-report/static/js/runtime-main.a1fdbef5.js",
+    "runtime-main.js.map": "/animal-crossing-daily-report/static/js/runtime-main.a1fdbef5.js.map",
+    "static/js/2.54fe2a27.chunk.js": "/animal-crossing-daily-report/static/js/2.54fe2a27.chunk.js",
+    "static/js/2.54fe2a27.chunk.js.map": "/animal-crossing-daily-report/static/js/2.54fe2a27.chunk.js.map",
+    "static/js/3.80b79440.chunk.js": "/animal-crossing-daily-report/static/js/3.80b79440.chunk.js",
+    "static/js/3.80b79440.chunk.js.map": "/animal-crossing-daily-report/static/js/3.80b79440.chunk.js.map",
+    "index.html": "/animal-crossing-daily-report/index.html",
+    "static/css/main.8c4f648a.chunk.css.map": "/animal-crossing-daily-report/static/css/main.8c4f648a.chunk.css.map",
+    "static/js/2.54fe2a27.chunk.js.LICENSE.txt": "/animal-crossing-daily-report/static/js/2.54fe2a27.chunk.js.LICENSE.txt",
+    "static/media/money-bag-icon.7fcd0107.png": "/animal-crossing-daily-report/static/media/money-bag-icon.7fcd0107.png",
+    "static/media/pause-button.7c376cc9.svg": "/animal-crossing-daily-report/static/media/pause-button.7c376cc9.svg",
+    "static/media/play-button.76431e02.svg": "/animal-crossing-daily-report/static/media/play-button.76431e02.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a1fdbef5.js",
+    "static/js/2.54fe2a27.chunk.js",
+    "static/css/main.8c4f648a.chunk.css",
+    "static/js/main.cd270a17.chunk.js"
+  ]
+}
