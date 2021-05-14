@@ -21,8 +21,8 @@ const useQueryFish = () => {
   );
   return {
     data: data?.data,
-    isError,
-    isLoading,
+    isError: isError,
+    isLoading: isLoading,
   };
 };
 

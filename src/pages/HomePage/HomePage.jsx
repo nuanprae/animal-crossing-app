@@ -3,13 +3,13 @@ import { useState, useEffect } from 'react';
 import TextBlock from '../../components/TextBlock/TextBlock';
 import ItemCard from '../../components/ItemCard/ItemCard';
 
+import { findTotalCreatures } from '../../utils';
+
 import './home-page.css';
 
-import useFetchAllCreatures from '../../hooks/useFetchAllCreatures';
+import useQueryAllCreatures from '../../hooks/useQueryAllCreatures';
 
 const HomePage = (props) => {
-  const { fishData, seaCreaturesData, bugsData } = useFetchAllCreatures();
-
   const [fishIcon, setFishIcon] = useState('');
   const [numberOfFishAvailable, setNumberOfFishAvailable] = useState(0);
   const [totalFish, setTotalFish] = useState(0);
@@ -22,18 +22,20 @@ const HomePage = (props) => {
   const [numberOfBugsAvailable, setNumberOfBugsAvailable] = useState(0);
   const [totalBugs, setTotalBugs] = useState(0);
 
+  const { fishData, seaCreaturesData, bugsData } = useQueryAllCreatures();
+
   useEffect(() => {
-    setFishIcon(fishData.dailyData[0].icon_uri);
-    setNumberOfFishAvailable(fishData.dailyData.length);
-    setTotalFish(Object.values(fishData.completeData).length);
+    setFishIcon(fishData.data?.dailyData[0].icon_uri);
+    setNumberOfFishAvailable(fishData.data?.dailyData.length);
+    setTotalFish(findTotalCreatures(fishData.data?.completeData));
 
-    setSeaCreatureIcon(seaCreaturesData.dailyData[0].icon_uri);
-    setNumberOfSeaCreaturesAvailable(seaCreaturesData.dailyData.length);
-    setTotalSeaCreatures(Object.values(seaCreaturesData.completeData).length);
+    setSeaCreatureIcon(seaCreaturesData.data?.dailyData[0].icon_uri);
+    setNumberOfSeaCreaturesAvailable(seaCreaturesData.data?.dailyData.length);
+    setTotalSeaCreatures(findTotalCreatures(seaCreaturesData.data?.completeData));
 
-    setBugIcon(bugsData.dailyData[0].icon_uri);
-    setNumberOfBugsAvailable(bugsData.dailyData.length);
-    setTotalBugs(Object.values(bugsData.completeData).length);
+    setBugIcon(bugsData.data?.dailyData[0].icon_uri);
+    setNumberOfBugsAvailable(bugsData.data?.dailyData.length);
+    setTotalBugs(findTotalCreatures(bugsData.data?.completeData));
   }, [fishData, seaCreaturesData, bugsData]);
 
   if (fishData.isLoading || seaCreaturesData.isLoading || bugsData.isLoading) {

@@ -17,8 +17,6 @@ const MusicPlayer = () => {
   const [audio, setAudio] = useState(null);
   const [hourlyID, setHourlyID] = useState(currentTime.slice(0, 2));
   const [isPlaying, setIsPlaying] = useState(false);
-  // const [seconds, setSeconds] = useState(new Date().getSeconds());
-  // const [minutes, setMinutes] = useState(new Date().getMinutes());
 
   // change audio every hour
   const date = new Date();
@@ -39,42 +37,31 @@ const MusicPlayer = () => {
   //   }
   // }, [seconds]);
 
-  // change audio every hour
-  // useEffect(() => {
-  //   console.log(minutes);
-  //   const intervalID = setInterval(() => {
-  //     setHourlyID('15');
-  //     setMinutes(0);
-  //     console.log(minutes);
-  //     if (minutes === 0) {
-  //       setHourlyID('16');
-  //       console.log(minutes);
-  //     }
-  //   }, (60 - minutes) * 60000);
-  //   return () => {
-  //     clearInterval(intervalID);
-  //   };
-  // }, [minutes]);
-
   useEffect(() => {
     if (weatherID >= 800 && weatherID <= 899) {
       const currentAudio = audioList?.filter(
         (obj) => obj['file-name'] === `BGM_24Hour_${hourlyID}_Sunny`,
       );
       const audioUrl = currentAudio[0]['music_uri'];
-      setAudio(new Audio(audioUrl));
+      if (audioUrl) {
+        setAudio(new Audio(audioUrl));
+      }
     } else if (weatherID >= 600 && weatherID <= 699) {
       const currentAudio = audioList?.filter(
         (obj) => obj['file-name'] === `BGM_24Hour_${hourlyID}_Snowy`,
       );
       const audioUrl = currentAudio[0]['music_uri'];
-      setAudio(new Audio(audioUrl));
+      if (audioUrl) {
+        setAudio(new Audio(audioUrl));
+      }
     } else if (weatherID >= 200 && weatherID <= 599) {
       const currentAudio = audioList?.filter(
         (obj) => obj['file-name'] === `BGM_24Hour_${hourlyID}_Rainy`,
       );
       const audioUrl = currentAudio[0]['music_uri'];
-      setAudio(new Audio(audioUrl));
+      if (audioUrl) {
+        setAudio(new Audio(audioUrl));
+      }
     }
   }, [audioList, hourlyID, weatherID]);
 
@@ -82,8 +69,6 @@ const MusicPlayer = () => {
     if (isPlaying) {
       audio?.play();
       audio.loop = true;
-      console.log(audio);
-      // audio.loop = true;
     } else if (!isPlaying) {
       audio?.pause();
     }
