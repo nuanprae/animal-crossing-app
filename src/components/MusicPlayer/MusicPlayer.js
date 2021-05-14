@@ -42,31 +42,31 @@ const MusicPlayer = () => {
       const currentAudio = audioList?.filter(
         (obj) => obj['file-name'] === `BGM_24Hour_${hourlyID}_Sunny`,
       );
-      const audioUrl = currentAudio[0]['music_uri'];
-      if (audioUrl) {
+      if (currentAudio) {
+        const audioUrl = currentAudio[0]['music_uri'];
         setAudio(new Audio(audioUrl));
       }
     } else if (weatherID >= 600 && weatherID <= 699) {
       const currentAudio = audioList?.filter(
         (obj) => obj['file-name'] === `BGM_24Hour_${hourlyID}_Snowy`,
       );
-      const audioUrl = currentAudio[0]['music_uri'];
-      if (audioUrl) {
+      if (currentAudio) {
+        const audioUrl = currentAudio[0]['music_uri'];
         setAudio(new Audio(audioUrl));
       }
     } else if (weatherID >= 200 && weatherID <= 599) {
       const currentAudio = audioList?.filter(
         (obj) => obj['file-name'] === `BGM_24Hour_${hourlyID}_Rainy`,
       );
-      const audioUrl = currentAudio[0]['music_uri'];
-      if (audioUrl) {
+      if (currentAudio) {
+        const audioUrl = currentAudio[0]['music_uri'];
         setAudio(new Audio(audioUrl));
       }
     }
   }, [audioList, hourlyID, weatherID]);
 
   useEffect(() => {
-    if (isPlaying) {
+    if (isPlaying && audio) {
       audio?.play();
       audio.loop = true;
     } else if (!isPlaying) {
