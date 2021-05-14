@@ -3,7 +3,7 @@ import { useQuery } from 'react-query';
 
 import { getDailyAcnhResults } from '../utils';
 
-const useFetchFish = () => {
+const useQueryFish = () => {
   const { data, isError, isLoading } = useQuery(
     'fish',
     async () => {
@@ -26,4 +26,4 @@ const useFetchFish = () => {
   };
 };
 
-export default useFetchFish;
+export default useQueryFish;

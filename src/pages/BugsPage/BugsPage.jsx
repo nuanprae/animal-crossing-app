@@ -7,28 +7,28 @@ import { sortDescendingOrder } from '../../utils';
 
 import './bugs-page.css';
 
-import useFetchData from '../../hooks/useFetchData';
 import useSortByPrice from '../../hooks/useSortByPrice';
 import useSortByType from '../../hooks/useSortByType';
 import useSelectLanguage from '../../hooks/useSelectLanguage';
+import useQueryBugs from '../../hooks/useQueryBugs';
 
 const BugsPage = () => {
   const [items, setItems] = useState([]);
   const [selectedLanguage, setSelectedLanguage] = useState('name-EUen');
   const [types, setTypes] = useState([]);
 
-  const { dailyData, isLoading, isError } = useFetchData('https://acnhapi.com/v1/bugs/', 'rarity');
+  const { data, isLoading, isError } = useQueryBugs();
   const { handleSelectLanguage } = useSelectLanguage(setSelectedLanguage);
   const { handleSortByPrice, sortByPrice } = useSortByPrice(items, setItems);
-  const { handleSortByType } = useSortByType(dailyData, setItems, sortByPrice, 'rarity');
+  const { handleSortByType } = useSortByType(data?.dailyData, setItems, sortByPrice, 'rarity');
 
   useEffect(() => {
-    setItems(sortDescendingOrder(dailyData, 'price'));
+    setItems(sortDescendingOrder(data?.dailyData, 'price'));
     setTypes(() => {
-      const rarityTypes = new Set(dailyData?.map((obj) => obj.availability.rarity));
+      const rarityTypes = new Set(data?.dailyData.map((obj) => obj.availability.rarity));
       return ['All', ...rarityTypes];
     });
-  }, [dailyData]);
+  }, [data]);
 
   if (isLoading) {
     return <h2>Loading data...please wait</h2>;

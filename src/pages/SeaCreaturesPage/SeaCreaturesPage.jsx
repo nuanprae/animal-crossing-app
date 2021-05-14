@@ -7,28 +7,28 @@ import { sortDescendingOrder } from '../../utils';
 
 import './sea-creatures-page.css';
 
-import useFetchData from '../../hooks/useFetchData';
 import useSortByPrice from '../../hooks/useSortByPrice';
 import useSortBySpeedType from '../../hooks/useSortBySpeedType';
 import useSelectLanguage from '../../hooks/useSelectLanguage';
+import useQuerySeaCreatures from '../../hooks/useQuerySeaCreatures';
 
 const SeaCreaturesPage = () => {
   const [items, setItems] = useState([]);
   const [selectedLanguage, setSelectedLanguage] = useState('name-EUen');
   const [types, setTypes] = useState([]);
 
-  const { dailyData, isLoading, isError } = useFetchData('https://acnhapi.com/v1/sea/');
+  const { data, isLoading, isError } = useQuerySeaCreatures();
   const { handleSelectLanguage } = useSelectLanguage(setSelectedLanguage);
   const { handleSortByPrice, sortByPrice } = useSortByPrice(items, setItems);
-  const { handleSortBySpeedType } = useSortBySpeedType(dailyData, setItems, sortByPrice);
+  const { handleSortBySpeedType } = useSortBySpeedType(data?.dailyData, setItems, sortByPrice);
 
   useEffect(() => {
-    setItems(sortDescendingOrder(dailyData, 'price'));
+    setItems(sortDescendingOrder(data?.dailyData, 'price'));
     setTypes(() => {
-      const speedTypes = new Set(dailyData?.map((obj) => obj.speed));
+      const speedTypes = new Set(data?.dailyData.map((obj) => obj.speed));
       return ['All', ...speedTypes];
     });
-  }, [dailyData]);
+  }, [data]);
 
   if (isLoading) {
     return <h2>Loading data...please wait</h2>;
