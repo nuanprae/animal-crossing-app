@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import ItemCardsGrid from '../../components/ItemCardsGrid/ItemCardsGrid';
 import DropdownButton from '../../components/DropdownButton/DropdownButton';
 
-import { sortDescendingOrder } from '../../utils';
+import { sortAscendingOrder } from '../../utils';
 
 import './fish-page.css';
 
@@ -23,7 +23,7 @@ const FishPage = () => {
   const { handleSelectLanguage } = useSelectLanguage(setSelectedLanguage);
 
   useEffect(() => {
-    setItems(sortDescendingOrder(data?.dailyData, 'price'));
+    setItems(sortAscendingOrder(data?.dailyData, 'price'));
     setTypes(() => {
       const locationTypes = new Set(data?.dailyData.map((obj) => obj.availability.location));
       return ['All', ...locationTypes];
@@ -44,7 +44,7 @@ const FishPage = () => {
         <DropdownButton
           label={'sort by'}
           onChange={handleSortByPrice}
-          options={['Highest price', 'Lowest price']}
+          options={['Lowest price', 'Highest price']}
         />
         <DropdownButton label={'location'} onChange={handleSortByType} options={types} />
         <DropdownButton

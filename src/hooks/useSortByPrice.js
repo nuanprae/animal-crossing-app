@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { sortAscendingOrder, sortDescendingOrder } from '../utils';
 
 const useSortByPrice = (state, setState) => {
-  const [sortByPrice, setSortByPrice] = useState('Highest price');
+  const [sortByPrice, setSortByPrice] = useState('Lowest price');
 
   const handleSortByPrice = (event) => {
     if (event.target.value === 'Highest price') {

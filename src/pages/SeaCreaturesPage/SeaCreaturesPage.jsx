@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import ItemCardsGrid from '../../components/ItemCardsGrid/ItemCardsGrid';
 import DropdownButton from '../../components/DropdownButton/DropdownButton';
 
-import { sortDescendingOrder } from '../../utils';
+import { sortAscendingOrder } from '../../utils';
 
 import './sea-creatures-page.css';
 
@@ -23,7 +23,7 @@ const SeaCreaturesPage = () => {
   const { handleSortBySpeedType } = useSortBySpeedType(data?.dailyData, setItems, sortByPrice);
 
   useEffect(() => {
-    setItems(sortDescendingOrder(data?.dailyData, 'price'));
+    setItems(sortAscendingOrder(data?.dailyData, 'price'));
     setTypes(() => {
       const speedTypes = new Set(data?.dailyData.map((obj) => obj.speed));
       return ['All', ...speedTypes];
@@ -44,7 +44,7 @@ const SeaCreaturesPage = () => {
         <DropdownButton
           label={'sort by'}
           onChange={handleSortByPrice}
-          options={['Highest price', 'Lowest price']}
+          options={['Lowest price', 'Highest price']}
         />
         <DropdownButton label={'speed'} onChange={handleSortBySpeedType} options={types} />
         <DropdownButton
