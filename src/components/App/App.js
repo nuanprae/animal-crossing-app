@@ -31,7 +31,7 @@ const App = () => {
       />
       <section className="tabs">
         <QueryClientProvider client={queryClient}>
-          <Router>
+          <Router basename="/animal-crossing-daily-report">
             <Nav className="nav" />
             <Switch>
               <Route exact path="/" component={HomePage}></Route>
