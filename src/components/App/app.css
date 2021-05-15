@@ -3,6 +3,7 @@
   grid-template-columns: 1fr;
   grid-template-rows: max-content max-content 2fr;
   min-height: 100vh;
+  background-color: #a8d8a8;
 }
 .header {
   grid-row: 1;
