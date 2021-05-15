@@ -51,6 +51,7 @@ const BugsPage = () => {
     <main className="page-container">
       <section className="sort">
         <FilterMenu
+          category={'Rarity'}
           sortByPrice={handleSortByPrice}
           sortByType={handleSortByType}
           selectLanguage={handleSelectLanguage}

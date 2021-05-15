@@ -51,6 +51,7 @@ const SeaCreaturesPage = () => {
     <main className="page-container">
       <section className="sort">
         <FilterMenu
+          category={'Speed'}
           sortByPrice={handleSortByPrice}
           sortByType={handleSortBySpeedType}
           selectLanguage={handleSelectLanguage}

@@ -50,6 +50,7 @@ const FishPage = () => {
   return (
     <main className="page-container">
       <FilterMenu
+        category={'Location'}
         sortByPrice={handleSortByPrice}
         sortByType={handleSortByType}
         selectLanguage={handleSelectLanguage}
