@@ -54,7 +54,7 @@ const MusicPlayer = () => {
         const audioUrl = currentAudio[0]['music_uri'];
         setAudio(new Audio(audioUrl));
       }
-    } else if (weatherID >= 200 && weatherID <= 599) {
+    } else {
       const currentAudio = audioList?.filter(
         (obj) => obj['file-name'] === `BGM_24Hour_${hourlyID}_Rainy`,
       );
