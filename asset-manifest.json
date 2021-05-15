@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/react/static/css/main.145faffc.chunk.css",
-    "main.js": "/react/static/js/main.daf1859d.chunk.js",
-    "main.js.map": "/react/static/js/main.daf1859d.chunk.js.map",
+    "main.css": "/react/static/css/main.5a673a27.chunk.css",
+    "main.js": "/react/static/js/main.ad7072c8.chunk.js",
+    "main.js.map": "/react/static/js/main.ad7072c8.chunk.js.map",
     "runtime-main.js": "/react/static/js/runtime-main.ae9a6ac3.js",
     "runtime-main.js.map": "/react/static/js/runtime-main.ae9a6ac3.js.map",
     "static/js/2.7d36df40.chunk.js": "/react/static/js/2.7d36df40.chunk.js",
@@ -10,7 +10,7 @@
     "static/js/3.f3758307.chunk.js": "/react/static/js/3.f3758307.chunk.js",
     "static/js/3.f3758307.chunk.js.map": "/react/static/js/3.f3758307.chunk.js.map",
     "index.html": "/react/index.html",
-    "static/css/main.145faffc.chunk.css.map": "/react/static/css/main.145faffc.chunk.css.map",
+    "static/css/main.5a673a27.chunk.css.map": "/react/static/css/main.5a673a27.chunk.css.map",
     "static/js/2.7d36df40.chunk.js.LICENSE.txt": "/react/static/js/2.7d36df40.chunk.js.LICENSE.txt",
     "static/media/money-bag-icon.7fcd0107.png": "/react/static/media/money-bag-icon.7fcd0107.png",
     "static/media/pause-button.7c376cc9.svg": "/react/static/media/pause-button.7c376cc9.svg",
@@ -19,7 +19,7 @@
   "entrypoints": [
     "static/js/runtime-main.ae9a6ac3.js",
     "static/js/2.7d36df40.chunk.js",
-    "static/css/main.145faffc.chunk.css",
-    "static/js/main.daf1859d.chunk.js"
+    "static/css/main.5a673a27.chunk.css",
+    "static/js/main.ad7072c8.chunk.js"
   ]
 }
