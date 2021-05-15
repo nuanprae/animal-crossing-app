@@ -14,18 +14,14 @@
   justify-self: flex-start;
 }
 .sub-header {
+  grid-row: 2;
   display: flex;
   gap: 1.5em;
   justify-content: space-around;
   align-items: center;
   justify-self: flex-end;
 }
-.location {
-  grid-row: 2;
-}
-.time {
-  grid-row: 3;
-}
+
 .weather-icon {
   width: 3rem;
 }

@@ -2,8 +2,8 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(min-content, max-content));
   justify-content: flex-end;
-  gap: 1em;
-  margin: 2em;
+  gap: 0.5em;
+  margin-top: 1em;
 }
 
 @media screen and (max-width: 400px) {
