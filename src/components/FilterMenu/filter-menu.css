@@ -3,7 +3,7 @@
   grid-template-columns: repeat(3, minmax(min-content, max-content));
   justify-content: flex-end;
   gap: 0.5em;
-  margin-top: 1em;
+  margin: 1em 2em;
 }
 
 @media screen and (max-width: 400px) {
