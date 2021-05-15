@@ -1,21 +1,25 @@
 .header {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 0.5em;
   padding: 2em 4em 1em 4em;
-  justify-content: space-between;
   background-color: #a8d8a8;
 }
 .header-text {
+  grid-row: 1;
   text-align: center;
   text-decoration: none;
   color: #6b5c43;
   font-size: 1.75rem;
+  justify-self: flex-start;
 }
 .sub-header {
+  grid-row: 2;
   display: flex;
   gap: 1.5em;
   justify-content: space-around;
   align-items: center;
+  justify-self: flex-end;
 }
 .weather-icon {
   width: 4rem;

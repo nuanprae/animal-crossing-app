@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
+import FilterMenu from '../../components/FilterMenu/FilterMenu';
 import ItemCardsGrid from '../../components/ItemCardsGrid/ItemCardsGrid';
-import DropdownButton from '../../components/DropdownButton/DropdownButton';
 import TextBlock from '../../components/TextBlock/TextBlock';
 
 import { sortAscendingOrder } from '../../utils';
@@ -50,16 +50,11 @@ const BugsPage = () => {
   return (
     <main className="page-container">
       <section className="sort">
-        <DropdownButton
-          label={'sort by'}
-          onChange={handleSortByPrice}
-          options={['Lowest price', 'Highest price']}
-        />
-        <DropdownButton label={'rarity'} onChange={handleSortByType} options={types} />
-        <DropdownButton
-          label={'languages'}
-          onChange={handleSelectLanguage}
-          options={['English', 'Japanese']}
+        <FilterMenu
+          sortByPrice={handleSortByPrice}
+          sortByType={handleSortByType}
+          selectLanguage={handleSelectLanguage}
+          types={types}
         />
       </section>
       <ItemCardsGrid items={items} language={selectedLanguage} />

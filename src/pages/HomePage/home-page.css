@@ -17,3 +17,9 @@
 .text-block {
   justify-self: center;
 }
+
+@media screen and (max-width: 725px) {
+  .item-cards {
+    flex-direction: column;
+  }
+}

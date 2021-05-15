@@ -1,0 +1,7 @@
+.filter-menu {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(min-content, max-content));
+  justify-content: flex-end;
+  gap: 1em;
+  margin: 2em;
+}
