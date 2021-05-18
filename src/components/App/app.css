@@ -1,18 +1,1 @@
-.app {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: max-content max-content 2fr;
-  min-height: 100vh;
-  background-color: #a8d8a8;
-}
-.header {
-  grid-row: 1;
-}
-.nav {
-  grid-row: 2;
-  justify-self: start;
-}
-.tabs {
-  grid-row: 3;
-  background-color: #a8d8a8;
-}
+

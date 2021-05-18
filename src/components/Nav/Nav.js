@@ -1,25 +1,31 @@
 import PropTypes from 'prop-types';
 import { Link, useLocation } from 'react-router-dom';
 
+import homeIcon from '../../assets/cabin.png';
+
 import './nav.css';
 
-const Nav = (props) => {
+const Nav = () => {
   const location = useLocation();
   const pathname = location.pathname;
 
   return (
-    <nav className={`nav ${props.className}`}>
+    <nav className="nav">
       <Link to="/" className={`link ${pathname === '/' && 'active'}`}>
-        Home
+        <img className="image-link" src={homeIcon} alt="home-nav-link" />
       </Link>
       <Link to="/fish" className={`link ${pathname === '/fish' && 'active'}`}>
-        Fish
+        <img className="image-link" src="https://acnhapi.com/v1/icons/fish/1" alt="fish-nav-link" />
       </Link>
       <Link to="/sea-creatures" className={`link ${pathname === '/sea-creatures' && 'active'}`}>
-        Sea Creatures
+        <img
+          className="image-link"
+          src="https://acnhapi.com/v1/icons/sea/1"
+          alt="sea-creature-nav-link"
+        />
       </Link>
       <Link to="/bugs" className={`link ${pathname === '/bugs' && 'active'}`}>
-        Bugs
+        <img className="image-link" src="https://acnhapi.com/v1/icons/bugs/1" alt="bug-nav-link" />
       </Link>
     </nav>
   );
