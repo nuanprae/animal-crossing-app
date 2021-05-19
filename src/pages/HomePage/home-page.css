@@ -1,32 +1,10 @@
-.home-page {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  background-color: white;
-}
-.link {
-  list-style: none;
-  width: 75px;
-  height: 75px;
-}
-.link:hover {
-  border-bottom: solid 3px #6b5c43;
-}
 .main {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  font-size: 2rem;
-  background-color: #a8d8a8;
+  font-size: 1.5rem;
+  background-color: #eee6d3;
   height: 80vh;
-}
-.image-link {
-  width: 75px;
-  height: 75px;
-}
-.footer {
-  padding: 1em;
-  background-color: #eee8aa;
 }

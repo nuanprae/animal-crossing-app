@@ -1,3 +1,9 @@
+.active {
+  border-bottom: solid 3px #6b5c43;
+}
+.image-link {
+  width: 100%;
+}
 .link {
   list-style: none;
   width: 75px;
@@ -9,11 +15,9 @@
 .nav {
   display: flex;
   gap: 2em;
-  padding: 1em;
+  padding: 0.5em 1em 1em 1em;
   justify-content: center;
-  background-color: #eee8aa;
-  height: 20vh;
-}
-.active {
-  border-bottom: solid 3px #6b5c43;
+  background-color: #eee6d3;
+  position: sticky;
+  bottom: 0;
 }

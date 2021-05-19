@@ -15,17 +15,21 @@ const Nav = () => {
         <img className="image-link" src={homeIcon} alt="home-nav-link" />
       </Link>
       <Link to="/fish" className={`link ${pathname === '/fish' && 'active'}`}>
-        <img className="image-link" src="https://acnhapi.com/v1/icons/fish/1" alt="fish-nav-link" />
+        <img
+          className="image-link"
+          src="https://acnhapi.com/v1/icons/fish/20"
+          alt="fish-nav-link"
+        />
       </Link>
       <Link to="/sea-creatures" className={`link ${pathname === '/sea-creatures' && 'active'}`}>
         <img
           className="image-link"
-          src="https://acnhapi.com/v1/icons/sea/1"
+          src="https://acnhapi.com/v1/icons/sea/20"
           alt="sea-creature-nav-link"
         />
       </Link>
       <Link to="/bugs" className={`link ${pathname === '/bugs' && 'active'}`}>
-        <img className="image-link" src="https://acnhapi.com/v1/icons/bugs/1" alt="bug-nav-link" />
+        <img className="image-link" src="https://acnhapi.com/v1/icons/bugs/2" alt="bug-nav-link" />
       </Link>
     </nav>
   );

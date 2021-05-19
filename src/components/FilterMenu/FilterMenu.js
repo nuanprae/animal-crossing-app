@@ -13,7 +13,7 @@ const FilterMenu = (props) => {
       />
       <DropdownButton label={props.category} onChange={props.sortByType} options={props.types} />
       <DropdownButton
-        label={'Languages'}
+        label={'Language'}
         onChange={props.selectLanguage}
         options={['English', 'Japanese']}
       />

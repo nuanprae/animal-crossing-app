@@ -1,11 +1,19 @@
 .drop-down {
-  background-color: #fddf6e;
   border-radius: 10px;
-  padding: 0.5em;
   border-style: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.5em;
 }
 select {
   background-color: #fff;
   border-radius: 8px;
   color: #6b5c43;
+}
+
+@media screen and (max-width: 400px) {
+  select {
+    width: 6em;
+    text-overflow: ellipsis;
+  }
 }

@@ -34,7 +34,7 @@ const SeaCreaturesPage = () => {
   if (isLoading) {
     return (
       <main className="page-container">
-        ] <TextBlock className={'text-block'} text={'Loading...'} />
+        <TextBlock text="Loading..." />
       </main>
     );
   }
@@ -42,22 +42,20 @@ const SeaCreaturesPage = () => {
   if (isError) {
     return (
       <main className="page-container">
-        <TextBlock className={'text-block'} text={'Sorry...something went wrong'} />
+        <TextBlock text="Sorry...something went wrong" />
       </main>
     );
   }
 
   return (
     <main className="page-container">
-      <section className="sort">
-        <FilterMenu
-          category={'Speed'}
-          sortByPrice={handleSortByPrice}
-          sortByType={handleSortBySpeedType}
-          selectLanguage={handleSelectLanguage}
-          types={types}
-        />
-      </section>
+      <FilterMenu
+        category={'Speed'}
+        sortByPrice={handleSortByPrice}
+        sortByType={handleSortBySpeedType}
+        selectLanguage={handleSelectLanguage}
+        types={types}
+      />
       <ItemCardsGrid items={items} language={selectedLanguage} />
     </main>
   );

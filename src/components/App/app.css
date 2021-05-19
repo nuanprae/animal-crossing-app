@@ -1,1 +1,6 @@
-
+.app {
+  display: flex;
+  background-color: #eee6d3;
+  flex-direction: column;
+  height: 100vh;
+}

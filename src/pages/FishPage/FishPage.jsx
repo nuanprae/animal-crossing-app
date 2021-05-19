@@ -34,7 +34,7 @@ const FishPage = () => {
   if (isLoading) {
     return (
       <main className="page-container">
-        ] <TextBlock className={'text-block'} text={'Loading...'} />
+        <TextBlock text="Loading..." />
       </main>
     );
   }
@@ -42,7 +42,7 @@ const FishPage = () => {
   if (isError) {
     return (
       <main className="page-container">
-        <TextBlock className={'text-block'} text={'Sorry...something went wrong'} />
+        <TextBlock text="Sorry...something went wrong" />
       </main>
     );
   }
