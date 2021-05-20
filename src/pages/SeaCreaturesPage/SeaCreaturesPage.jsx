@@ -51,7 +51,7 @@ const SeaCreaturesPage = () => {
   }
 
   return (
-    <main className="sea-creatures-page">
+    <main className="page-container">
       <FilterMenu
         sortByPrice={handleSortByPrice}
         sortByType={handleSortBySpeedType}

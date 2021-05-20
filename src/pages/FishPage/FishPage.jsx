@@ -48,7 +48,7 @@ const FishPage = () => {
   }
 
   return (
-    <main className="fish-page">
+    <main className="page-container">
       <FilterMenu
         sortByPrice={handleSortByPrice}
         sortByType={handleSortByType}

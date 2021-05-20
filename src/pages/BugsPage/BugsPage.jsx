@@ -48,7 +48,7 @@ const BugsPage = () => {
   }
 
   return (
-    <main className="bugs-page">
+    <main className="page-container">
       <FilterMenu
         sortByPrice={handleSortByPrice}
         sortByType={handleSortByType}
