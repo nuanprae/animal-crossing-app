@@ -3,9 +3,9 @@ import { useQuery } from 'react-query';
 
 import { getDailyAcnhResults } from '../utils';
 
-const useQueryFish = (apiEndPoint) => {
+const useQueryCritters = (crittersType, apiEndPoint) => {
   const { data, isError, isLoading } = useQuery(
-    'fish',
+    crittersType,
     async () => {
       const apiCallResponse = await axios.get(apiEndPoint);
       const manipulatedData = {
@@ -26,4 +26,4 @@ const useQueryFish = (apiEndPoint) => {
   };
 };
 
-export default useQueryFish;
+export default useQueryCritters;

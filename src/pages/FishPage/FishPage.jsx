@@ -11,14 +11,14 @@ import './fish-page.css';
 import useSortByPrice from '../../hooks/useSortByPrice';
 import useSortByType from '../../hooks/useSortByType';
 import useSelectLanguage from '../../hooks/useSelectLanguage';
-import useQueryFish from '../../hooks/useQueryFish';
+import useQueryCritters from '../../hooks/useQueryCritters';
 
 const FishPage = () => {
   const [items, setItems] = useState([]);
   const [selectedLanguage, setSelectedLanguage] = useState('name-EUen');
   const [types, setTypes] = useState([]);
 
-  const { data, isLoading, isError } = useQueryFish();
+  const { data, isLoading, isError } = useQueryCritters('fish', 'https://acnhapi.com/v1/fish/');
   const { handleSortByPrice, sortByPrice } = useSortByPrice(items, setItems);
   const { handleSortByType } = useSortByType(data?.dailyData, setItems, sortByPrice, 'location');
   const { handleSelectLanguage } = useSelectLanguage(setSelectedLanguage);
