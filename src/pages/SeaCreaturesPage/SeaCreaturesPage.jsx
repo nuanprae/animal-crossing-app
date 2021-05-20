@@ -50,10 +50,10 @@ const SeaCreaturesPage = () => {
   return (
     <main className="page-container">
       <FilterMenu
-        category={'Speed'}
         sortByPrice={handleSortByPrice}
         sortByType={handleSortBySpeedType}
         selectLanguage={handleSelectLanguage}
+        optgroup="Speed"
         types={types}
       />
       <ItemCardsGrid items={items} language={selectedLanguage} />

@@ -7,14 +7,14 @@ const FilterMenu = (props) => {
   return (
     <section className="filter-menu">
       <DropdownButton
-        label={'Sort by'}
         onChange={props.sortByPrice}
+        optgroup="Sort by price"
         options={['Lowest price', 'Highest price']}
       />
-      <DropdownButton label={props.category} onChange={props.sortByType} options={props.types} />
+      <DropdownButton onChange={props.sortByType} optgroup={props.optgroup} options={props.types} />
       <DropdownButton
-        label={'Language'}
         onChange={props.selectLanguage}
+        optgroup="Language"
         options={['English', 'Japanese']}
       />
     </section>

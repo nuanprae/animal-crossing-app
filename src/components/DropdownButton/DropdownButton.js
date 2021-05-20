@@ -8,9 +8,8 @@ const DropdownButton = (props) => {
 
   return (
     <section className={`drop-down ${props.className}`}>
-      <label>{props.label}: </label>
       <select name={props.label} id={props.label} onChange={props.onChange}>
-        {listOptions}
+        <optgroup label={props.optgroup}>{listOptions}</optgroup>
       </select>
     </section>
   );

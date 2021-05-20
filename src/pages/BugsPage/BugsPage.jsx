@@ -50,10 +50,10 @@ const BugsPage = () => {
   return (
     <main className="page-container">
       <FilterMenu
-        category={'Rarity'}
         sortByPrice={handleSortByPrice}
         sortByType={handleSortByType}
         selectLanguage={handleSelectLanguage}
+        optgroup="Rarity"
         types={types}
       />
       <ItemCardsGrid items={items} language={selectedLanguage} />
