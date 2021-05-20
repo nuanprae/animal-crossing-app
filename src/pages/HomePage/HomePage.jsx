@@ -4,7 +4,7 @@ import './home-page.css';
 
 const HomePage = () => {
   return (
-    <main className="main">
+    <main className="home-page">
       <h2>Animal Crossing</h2>
       <img className="villager-icon" src={villagerImg} alt="villager-icon" />
       <h2>Daily Report</h2>
