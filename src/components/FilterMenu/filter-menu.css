@@ -3,5 +3,5 @@
   grid-template-columns: repeat(3, minmax(min-content, max-content));
   justify-content: center;
   gap: 0.5em;
-  padding: 0 1.5em 1.5em 1.5em;
+  padding: 1em 0.5em 1.5em 0.5em;
 }

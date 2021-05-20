@@ -7,11 +7,9 @@ const DropdownButton = (props) => {
   const listOptions = options.map((option) => <option key={option}>{option}</option>);
 
   return (
-    <section className={`drop-down ${props.className}`}>
-      <select name={props.label} id={props.label} onChange={props.onChange}>
-        <optgroup label={props.optgroup}>{listOptions}</optgroup>
-      </select>
-    </section>
+    <select className="select" name={props.label} id={props.label} onChange={props.onChange}>
+      <optgroup label={props.optgroup}>{listOptions}</optgroup>
+    </select>
   );
 };
 
@@ -19,6 +17,7 @@ DropdownButton.propTypes = {
   className: PropTypes.string,
   label: PropTypes.string,
   onChange: PropTypes.func,
+  optgroup: PropTypes.string,
   options: PropTypes.array,
 };
 

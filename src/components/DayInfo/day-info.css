@@ -5,6 +5,7 @@
   flex-wrap: wrap;
   font-size: 0.85em;
   gap: 2em;
+  min-height: 10vh;
   justify-content: center;
   padding: 1em;
 }
