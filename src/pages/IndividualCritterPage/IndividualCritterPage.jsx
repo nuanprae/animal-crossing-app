@@ -24,23 +24,27 @@ const IndividualCritterPage = (props) => {
   }
 
   return (
-    <main className="fish-details-page">
-      <figure className="figure">
-        <img src={data?.icon_uri} alt={data?.name['name-EUen']} />
+    <main className="individual-critter-page">
+      <figure className="individual-critter-page__figure">
+        <img
+          className="individual-critter-page_image"
+          src={data?.icon_uri}
+          alt={data?.name['name-EUen']}
+        />
       </figure>
-      <h2>{data?.name['name-EUen']}</h2>
-      <ul>
-        <li>
+      <h2 className="individual-critter-page__heading">{data?.name['name-EUen']}</h2>
+      <ul className="individual-critter-page__list">
+        <li className="individual-critter-page__list-item">
           <strong>Price:</strong> {data?.price}
         </li>
-        <li>
+        <li className="individual-critter-page__list-item">
           <strong>Location:</strong> {data?.availability.location}
         </li>
-        <li>
+        <li className="individual-critter-page__list-item">
           <strong>Rarity:</strong> {data?.availability.rarity}
         </li>
       </ul>
-      <p>{data?.['museum-phrase']}</p>
+      <p className="individual-critter-page__paragraph">{data?.['museum-phrase']}</p>
     </main>
   );
 };

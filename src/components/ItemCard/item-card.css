@@ -2,12 +2,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   text-align: center;
   background-color: white;
   border-radius: 10px;
   box-shadow: 5px 5px 5px #d3d3d3;
-  width: 200px;
-  height: 224px;
+  max-width: 200px;
+  height: 250px;
 }
 
 .item-card-image {
@@ -18,7 +19,6 @@
 
 .item-card-caption1 {
   display: flex;
-  justify-content: center;
   padding: 0.5em 0.5em;
   font-weight: 600;
 }
@@ -26,9 +26,7 @@
 .item-card-caption2 {
   display: flex;
   align-items: center;
-  justify-content: center;
-  white-space: nowrap;
-  padding: 0.5em 0.5em;
+  padding-right: 1em;
 }
 
 .money-bag-icon {

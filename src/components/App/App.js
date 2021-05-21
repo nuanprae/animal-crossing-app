@@ -9,6 +9,7 @@ import FishPage from '../../pages/FishPage/FishPage';
 import SeaCreaturesPage from '../../pages/SeaCreaturesPage/SeaCreaturesPage';
 import BugsPage from '../../pages/BugsPage/BugsPage';
 import IndividualCritterPage from '../../pages/IndividualCritterPage/IndividualCritterPage';
+import IndividualSeaCreaturePage from '../../pages/SeaCreaturesPage/IndividualSeaCreaturePage/IndividualSeaCreaturePage';
 
 import './app.css';
 
@@ -39,7 +40,7 @@ const App = () => {
             </Route>
             <Route path="/fish" component={FishPage}></Route>
             <Route path="/sea-creatures/:id">
-              <IndividualCritterPage type="sea" />
+              <IndividualSeaCreaturePage type="sea" />
             </Route>
             <Route path="/sea-creatures" component={SeaCreaturesPage}></Route>
             <Route path="/bugs/:id">

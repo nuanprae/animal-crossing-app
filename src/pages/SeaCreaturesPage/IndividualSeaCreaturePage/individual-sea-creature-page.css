@@ -1,4 +1,4 @@
-.individual-critter-page {
+.individual-sea-creature-page {
   display: flex;
   flex-direction: column;
   height: 80vh;
@@ -7,7 +7,7 @@
   padding: 0 2em 1em 2em;
   width: 100%;
 }
-.individual-critter-page__figure {
+.individual-sea-creature-page__figure {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -17,21 +17,21 @@
   width: 200px;
   min-height: 200px;
 }
-.individual-critter-page_image {
+.individual-sea-creature-page_image {
   width: 128px;
   height: 128px;
 }
-.individual-critter-page__heading {
+.individual-sea-creature-page__heading {
   padding-top: 0.5em;
 }
-.individual-critter-page__list {
+.individual-sea-creature-page__list {
   padding: 1em;
   text-align: center;
 }
-.individual-critter-page__list-item {
+.individual-sea-creature-page__list-item {
   padding-bottom: 0.5em;
 }
-.individual-critter-page__paragraph {
+.individual-sea-creature-page__paragraph {
   line-height: 1.5;
   max-width: 50ch;
   padding-left: 1em;
