@@ -10,8 +10,8 @@
 *:focus {
   outline: none;
 }
-ul[class],
-ol[class] {
+ul,
+ol {
   list-style: none;
 }
 body {

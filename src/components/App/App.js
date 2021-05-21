@@ -6,6 +6,7 @@ import Nav from '../../components/Nav/Nav';
 
 import HomePage from '../../pages/HomePage/HomePage';
 import FishPage from '../../pages/FishPage/FishPage';
+import FishDetailsPage from '../../pages/FishPage/FishDetailsPage/FishDetailsPage';
 import SeaCreaturesPage from '../../pages/SeaCreaturesPage/SeaCreaturesPage';
 import BugsPage from '../../pages/BugsPage/BugsPage';
 
@@ -33,6 +34,7 @@ const App = () => {
         <Router>
           <Switch>
             <Route exact path="/" component={HomePage}></Route>
+            <Route path="/fish/:id" component={FishDetailsPage}></Route>
             <Route path="/fish" component={FishPage}></Route>
             <Route path="/sea-creatures" component={SeaCreaturesPage}></Route>
             <Route path="/bugs" component={BugsPage}></Route>

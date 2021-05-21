@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import ItemCard from '../ItemCard/ItemCard';
 import moneyBagIcon from '../../assets/money-bag-icon.png';
@@ -10,14 +11,19 @@ const ItemCardsGrid = (props) => {
     <section className="item-cards-grid">
       {props.items?.map((item) => {
         return (
-          <ItemCard
+          <Link
+            className="item-card-link"
             key={item['file-name']}
-            image={item.icon_uri}
-            alt={item.name[`${props.language}`]}
-            caption1={item.name[`${props.language}`]}
-            caption2={item.price}
-            moneyIcon={<img className="money-bag-icon" src={moneyBagIcon} alt={'money bag'} />}
-          ></ItemCard>
+            to={`/fish/${item['file-name']}`}
+          >
+            <ItemCard
+              image={item.icon_uri}
+              alt={item.name[`${props.language}`]}
+              caption1={item.name[`${props.language}`]}
+              caption2={item.price}
+              moneyIcon={<img className="money-bag-icon" src={moneyBagIcon} alt={'money bag'} />}
+            ></ItemCard>
+          </Link>
         );
       })}
     </section>
