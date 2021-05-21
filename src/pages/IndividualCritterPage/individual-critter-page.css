@@ -8,7 +8,7 @@
   width: 200px;
   height: 200px;
 }
-.page-container {
+.fish-details-page {
   display: flex;
   flex-direction: column;
   height: 80vh;

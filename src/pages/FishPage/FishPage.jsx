@@ -56,7 +56,7 @@ const FishPage = () => {
         optgroup="Location"
         types={types}
       />
-      <ItemCardsGrid items={items} language={selectedLanguage} />
+      <ItemCardsGrid items={items} language={selectedLanguage} linkPath="fish" />
     </main>
   );
 };

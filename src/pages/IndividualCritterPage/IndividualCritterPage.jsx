@@ -1,21 +1,11 @@
-import { useParams } from 'react-router';
-import { useQuery } from 'react-query';
-import axios from 'axios';
+import TextBlock from '../../components/TextBlock/TextBlock';
 
-import TextBlock from '../../../components/TextBlock/TextBlock';
+import './individual-critter-page.css';
 
-import './fish-details-page.css';
+import useQueryIndividualCritter from '../../hooks/useQueryIndividualCritter';
 
-const FishDetailsPage = () => {
-  const { id } = useParams();
-  const { isLoading, isError, data } = useQuery(
-    `fish-${id}`,
-    async () => {
-      const apiCallResponse = await axios.get(`https://acnhapi.com/v1/fish/${id}`);
-      return apiCallResponse.data;
-    },
-    { refetchOnMount: false, refetchOnWindowFocus: false },
-  );
+const IndividualCritterPage = (props) => {
+  const { data, isLoading, isError } = useQueryIndividualCritter(props.type);
 
   if (isLoading) {
     return (
@@ -34,7 +24,7 @@ const FishDetailsPage = () => {
   }
 
   return (
-    <main className="page-container">
+    <main className="fish-details-page">
       <figure className="figure">
         <img src={data?.icon_uri} alt={data?.name['name-EUen']} />
       </figure>
@@ -55,4 +45,4 @@ const FishDetailsPage = () => {
   );
 };
 
-export default FishDetailsPage;
+export default IndividualCritterPage;

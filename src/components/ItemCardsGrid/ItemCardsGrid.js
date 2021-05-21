@@ -14,7 +14,7 @@ const ItemCardsGrid = (props) => {
           <Link
             className="item-card-link"
             key={item['file-name']}
-            to={`/fish/${item['file-name']}`}
+            to={`/${props.linkPath}/${item['file-name']}`}
           >
             <ItemCard
               image={item.icon_uri}
@@ -32,6 +32,7 @@ const ItemCardsGrid = (props) => {
 ItemCardsGrid.propTypes = {
   items: PropTypes.array,
   language: PropTypes.string,
+  linkPath: PropTypes.string,
 };
 
 export default ItemCardsGrid;

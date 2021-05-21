@@ -56,7 +56,7 @@ const BugsPage = () => {
         optgroup="Rarity"
         types={types}
       />
-      <ItemCardsGrid items={items} language={selectedLanguage} />
+      <ItemCardsGrid items={items} language={selectedLanguage} linkPath="bugs" />
     </main>
   );
 };

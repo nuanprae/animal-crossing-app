@@ -59,7 +59,7 @@ const SeaCreaturesPage = () => {
         optgroup="Speed"
         types={types}
       />
-      <ItemCardsGrid items={items} language={selectedLanguage} />
+      <ItemCardsGrid items={items} language={selectedLanguage} linkPath="sea-creatures" />
     </main>
   );
 };
