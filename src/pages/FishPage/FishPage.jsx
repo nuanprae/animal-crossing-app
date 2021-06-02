@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 
 import FilterMenu from '../../components/FilterMenu/FilterMenu';
 import ItemCardsGrid from '../../components/ItemCardsGrid/ItemCardsGrid';
+import Loading from '../../components/Loading/Loading';
 import TextBlock from '../../components/TextBlock/TextBlock';
 
 import { sortAscendingOrder } from '../../utils';
@@ -32,11 +33,7 @@ const FishPage = () => {
   }, [data]);
 
   if (isLoading) {
-    return (
-      <main className="page-container">
-        <TextBlock text="Loading..." />
-      </main>
-    );
+    return <Loading />;
   }
 
   if (isError) {

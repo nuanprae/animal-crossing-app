@@ -1,0 +1,9 @@
+.loading {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
+  justify-content: center;
+  overflow-y: scroll;
+  padding: 0 2em 1em 2em;
+}
