@@ -1,6 +1,6 @@
 {
-  "homepage": "https://nuanprae.github.io/react/",
-  "name": "animalcrossing",
+  "homepage": "https://nuanprae.github.io/animal-crossing-app",
+  "name": "animal-crossing-daily-report-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
