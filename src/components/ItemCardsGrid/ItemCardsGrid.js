@@ -21,7 +21,7 @@ const ItemCardsGrid = ({ items, linkPath, language }) => {
               alt={item.name[`${language}`]}
               caption1={item.name[`${language}`]}
               caption2={item.price}
-              moneyIcon={<img className="money-bag-icon" src={moneyBagIcon} alt={'money bag'} />}
+              icon={<img className="money-bag-icon" src={moneyBagIcon} alt={'money bag'} />}
             ></ItemCard>
           </Link>
         );

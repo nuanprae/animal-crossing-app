@@ -5,8 +5,7 @@ import * as utils from '../utils';
 const useGetDateAndTime = () => {
   const dayNumber = utils.getDayNumber();
   const monthName = utils.getMonthName();
-  const timeAtLoad = utils.getTime();
-  const [currentTime, setCurrentTime] = useState(timeAtLoad);
+  const [currentTime, setCurrentTime] = useState(utils.getTime());
 
   useEffect(() => {
     const intervalID = setInterval(() => {
@@ -15,7 +14,7 @@ const useGetDateAndTime = () => {
     return () => {
       clearInterval(intervalID);
     };
-  }, []);
+  }, [currentTime]);
 
   return { dayNumber, monthName, currentTime };
 };

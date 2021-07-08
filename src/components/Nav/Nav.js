@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { Link, useLocation } from 'react-router-dom';
 
 import homeIcon from '../../assets/cabin.png';

@@ -14,28 +14,18 @@ const MusicPlayer = () => {
   const { currentTime } = useGetDateAndTime();
   const { weatherID } = useFetchWeatherData();
 
+  const hours = currentTime.slice(0, 2);
+  const minutes = currentTime.slice(3, 5);
+  const onTheHour = parseInt(minutes) === 0;
+
   const [audio, setAudio] = useState(null);
   const [hourlyID, setHourlyID] = useState(currentTime.slice(0, 2));
   const [isPlaying, setIsPlaying] = useState(false);
 
-  // change audio every hour
-  const date = new Date();
-  const minutes = date.getMinutes();
   useEffect(() => {
-    if (minutes === 0) {
-      setHourlyID(currentTime.slice(0, 2));
-    }
+    setHourlyID(hours);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [minutes]);
-
-  // change audio every minute
-  // const date = new Date();
-  // const seconds = date.getSeconds();
-  // useEffect(() => {
-  //   if (seconds === 0) {
-  //     setHourlyID(currentTime.slice(3, 5));
-  //   }
-  // }, [seconds]);
+  }, [onTheHour]);
 
   useEffect(() => {
     if (weatherID >= 800 && weatherID <= 899) {
