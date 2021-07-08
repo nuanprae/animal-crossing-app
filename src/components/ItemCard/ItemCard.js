@@ -1,15 +1,16 @@
+import classNamesHelper from 'classnames';
 import PropTypes from 'prop-types';
 
 import './item-card.css';
 
-const ItemCard = (props) => {
+const ItemCard = ({ alt, caption1, caption2, className, icon, image }) => {
   return (
-    <figure className={`item-card ${props.className}`}>
-      <img className="item-card-image" src={props.image} alt={props.alt} />
-      <figcaption className="item-card-caption1">{props.caption1}</figcaption>
+    <figure className={classNamesHelper('item-card', className)}>
+      <img className="item-card-image" src={image} alt={alt} />
+      <figcaption className="item-card-caption1">{caption1}</figcaption>
       <figcaption className="item-card-caption2">
-        {props.moneyIcon}
-        {props.caption2}
+        {icon}
+        {caption2}
       </figcaption>
     </figure>
   );
@@ -20,8 +21,8 @@ ItemCard.propTypes = {
   caption1: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   caption2: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   className: PropTypes.string,
+  icon: PropTypes.object,
   image: PropTypes.string,
-  moneyIcon: PropTypes.object,
 };
 
 export default ItemCard;

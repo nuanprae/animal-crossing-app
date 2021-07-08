@@ -4,9 +4,9 @@ import playButtonSvg from '../../assets/play-button.svg';
 
 import './play-button.css';
 
-const PlayButton = (props) => {
+const PlayButton = ({ onClick }) => {
   return (
-    <button className="play-button" onClick={props.onClick}>
+    <button className="play-button" onClick={onClick}>
       <img src={playButtonSvg} alt="play-button" />
     </button>
   );

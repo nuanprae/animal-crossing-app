@@ -1,9 +1,10 @@
+import classNamesHelper from 'classnames';
 import PropTypes from 'prop-types';
 
 import './text-block.css';
 
-const TextBlock = (props) => {
-  return <h4 className={`text-block ${props.className}`}>{props.text}</h4>;
+const TextBlock = ({ className, text }) => {
+  return <h4 className={classNamesHelper('text-block', className)}>{text}</h4>;
 };
 
 TextBlock.propTypes = {

@@ -4,9 +4,9 @@ import pauseButtonSvg from '../../assets/pause-button.svg';
 
 import './pause-button.css';
 
-const PauseButton = (props) => {
+const PauseButton = ({ onClick }) => {
   return (
-    <button className="pause-button" onClick={props.onClick}>
+    <button className="pause-button" onClick={onClick}>
       <img src={pauseButtonSvg} alt="pause-button" />
     </button>
   );

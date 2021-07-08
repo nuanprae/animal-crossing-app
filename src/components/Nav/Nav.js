@@ -30,8 +30,4 @@ const Nav = () => {
   );
 };
 
-Nav.propTypes = {
-  className: PropTypes.string,
-};
-
 export default Nav;

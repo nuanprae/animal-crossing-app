@@ -4,13 +4,13 @@ import MusicPlayer from '../MusicPlayer/MusicPlayer';
 
 import './day-info.css';
 
-const DayInfo = (props) => {
+const DayInfo = ({ alt, date, location, time, weatherIcon }) => {
   return (
-    <section className={`day-info ${props.className}`}>
-      <h4>{props.location}</h4>
-      <img className="weather-icon" src={props.weatherIcon} alt={props.alt} />
-      <h4>{props.date}</h4>
-      <h4>{props.time}</h4>
+    <section className="day-info">
+      <h4>{location}</h4>
+      <img className="weather-icon" src={weatherIcon} alt={alt} />
+      <h4>{date}</h4>
+      <h4>{time}</h4>
       <MusicPlayer />
     </section>
   );
@@ -18,11 +18,10 @@ const DayInfo = (props) => {
 
 DayInfo.propTypes = {
   alt: PropTypes.string,
-  className: PropTypes.string,
   date: PropTypes.string,
-  weatherIcon: PropTypes.string,
   location: PropTypes.string,
   time: PropTypes.string,
+  weatherIcon: PropTypes.string,
 };
 
 export default DayInfo;
