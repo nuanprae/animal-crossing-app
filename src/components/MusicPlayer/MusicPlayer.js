@@ -19,7 +19,7 @@ const MusicPlayer = () => {
   const onTheHour = parseInt(minutes) === 0;
 
   const [audio, setAudio] = useState(null);
-  const [hourlyID, setHourlyID] = useState(currentTime.slice(0, 2));
+  const [hourlyID, setHourlyID] = useState(hours);
   const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
@@ -27,6 +27,7 @@ const MusicPlayer = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [onTheHour]);
 
+  // setAudio according to time and weather
   useEffect(() => {
     if (weatherID >= 800 && weatherID <= 899) {
       const currentAudio = audioList?.filter(
@@ -56,7 +57,7 @@ const MusicPlayer = () => {
   }, [audioList, hourlyID, weatherID]);
 
   useEffect(() => {
-    if (isPlaying && audio) {
+    if (isPlaying) {
       audio?.play();
       audio.loop = true;
     } else if (!isPlaying) {
