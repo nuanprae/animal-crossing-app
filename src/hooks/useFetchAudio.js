@@ -16,9 +16,7 @@ const useFetchAudio = () => {
     fetchData();
   }, []);
 
-  return {
-    audioList,
-  };
+  return { audioList };
 };
 
 export default useFetchAudio;

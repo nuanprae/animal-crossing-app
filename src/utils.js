@@ -38,9 +38,3 @@ export const sortAscendingOrder = (array, type) => {
     return [...array].sort((a, b) => a[type] - b[type]);
   }
 };
-
-export const findTotalCreatures = (data) => {
-  if (data) {
-    return Object.values(data).length;
-  }
-};

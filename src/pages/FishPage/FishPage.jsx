@@ -19,15 +19,15 @@ const FishPage = () => {
   const [selectedLanguage, setSelectedLanguage] = useState('name-EUen');
   const [types, setTypes] = useState([]);
 
-  const { data, isLoading, isError } = useQueryCritters('fish', 'https://acnhapi.com/v1/fish/');
+  const { data, isLoading, isError } = useQueryCritters('https://acnhapi.com/v1/fish/', 'fish');
   const { handleSortByPrice, sortByPrice } = useSortByPrice(items, setItems);
-  const { handleSortByType } = useSortByType(data?.dailyData, setItems, sortByPrice, 'location');
+  const { handleSortByType } = useSortByType(data, setItems, sortByPrice, 'location');
   const { handleSelectLanguage } = useSelectLanguage(setSelectedLanguage);
 
   useEffect(() => {
-    setItems(sortAscendingOrder(data?.dailyData, 'price'));
+    setItems(sortAscendingOrder(data, 'price'));
     setTypes(() => {
-      const locationTypes = new Set(data?.dailyData.map((obj) => obj.availability.location));
+      const locationTypes = new Set(data?.map((obj) => obj.availability.location));
       return ['All', ...locationTypes];
     });
   }, [data]);

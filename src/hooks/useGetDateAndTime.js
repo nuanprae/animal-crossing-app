@@ -5,6 +5,7 @@ import * as utils from '../utils';
 const useGetDateAndTime = () => {
   const dayNumber = utils.getDayNumber();
   const monthName = utils.getMonthName();
+
   const [currentTime, setCurrentTime] = useState(utils.getTime());
 
   useEffect(() => {
@@ -16,7 +17,7 @@ const useGetDateAndTime = () => {
     };
   }, [currentTime]);
 
-  return { dayNumber, monthName, currentTime };
+  return { currentTime, dayNumber, monthName };
 };
 
 export default useGetDateAndTime;

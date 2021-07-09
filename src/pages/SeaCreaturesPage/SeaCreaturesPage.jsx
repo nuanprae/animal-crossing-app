@@ -19,17 +19,17 @@ const SeaCreaturesPage = () => {
   const [types, setTypes] = useState([]);
 
   const { data, isLoading, isError } = useQueryCritters(
-    'sea creatures',
     'https://acnhapi.com/v1/sea/',
+    'sea creatures',
   );
   const { handleSelectLanguage } = useSelectLanguage(setSelectedLanguage);
   const { handleSortByPrice, sortByPrice } = useSortByPrice(items, setItems);
-  const { handleSortBySpeedType } = useSortBySpeedType(data?.dailyData, setItems, sortByPrice);
+  const { handleSortBySpeedType } = useSortBySpeedType(data, setItems, sortByPrice);
 
   useEffect(() => {
-    setItems(sortAscendingOrder(data?.dailyData, 'price'));
+    setItems(sortAscendingOrder(data, 'price'));
     setTypes(() => {
-      const speedTypes = new Set(data?.dailyData.map((obj) => obj.speed));
+      const speedTypes = new Set(data?.map((obj) => obj.speed));
       return ['All', ...speedTypes];
     });
   }, [data]);

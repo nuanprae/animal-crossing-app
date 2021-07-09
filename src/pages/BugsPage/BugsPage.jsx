@@ -18,15 +18,15 @@ const BugsPage = () => {
   const [selectedLanguage, setSelectedLanguage] = useState('name-EUen');
   const [types, setTypes] = useState([]);
 
-  const { data, isLoading, isError } = useQueryCritters('bugs', 'https://acnhapi.com/v1/bugs/');
+  const { data, isLoading, isError } = useQueryCritters('https://acnhapi.com/v1/bugs/', 'bugs');
   const { handleSelectLanguage } = useSelectLanguage(setSelectedLanguage);
   const { handleSortByPrice, sortByPrice } = useSortByPrice(items, setItems);
-  const { handleSortByType } = useSortByType(data?.dailyData, setItems, sortByPrice, 'rarity');
+  const { handleSortByType } = useSortByType(data, setItems, sortByPrice, 'rarity');
 
   useEffect(() => {
-    setItems(sortAscendingOrder(data?.dailyData, 'price'));
+    setItems(sortAscendingOrder(data, 'price'));
     setTypes(() => {
-      const rarityTypes = new Set(data?.dailyData.map((obj) => obj.availability.rarity));
+      const rarityTypes = new Set(data?.map((obj) => obj.availability.rarity));
       return ['All', ...rarityTypes];
     });
   }, [data]);

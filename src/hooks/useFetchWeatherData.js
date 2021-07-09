@@ -3,9 +3,9 @@ import { useState, useEffect } from 'react';
 
 const useFetchWeatherData = () => {
   const [city, setCity] = useState('');
+  const [weatherDescription, setWeatherDescription] = useState('');
   const [weatherIcon, setWeatherIcon] = useState('');
   const [weatherID, setWeatherID] = useState(0);
-  const [weatherDescription, setWeatherDescription] = useState('');
 
   useEffect(() => {
     const fetchWeatherData = () => {
@@ -29,7 +29,7 @@ const useFetchWeatherData = () => {
     fetchWeatherData();
   }, []);
 
-  return { city, weatherIcon, weatherID, weatherDescription };
+  return { city, weatherDescription, weatherIcon, weatherID };
 };
 
 export default useFetchWeatherData;
