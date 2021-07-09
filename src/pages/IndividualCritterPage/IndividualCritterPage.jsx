@@ -1,11 +1,13 @@
+import PropTypes from 'prop-types';
+
 import TextBlock from '../../components/TextBlock/TextBlock';
 
 import './individual-critter-page.css';
 
 import useQueryIndividualCritter from '../../hooks/useQueryIndividualCritter';
 
-const IndividualCritterPage = (props) => {
-  const { data, isLoading, isError } = useQueryIndividualCritter(props.type);
+const IndividualCritterPage = ({ type }) => {
+  const { data, isLoading, isError } = useQueryIndividualCritter(type);
 
   if (isLoading) {
     return (
@@ -47,6 +49,10 @@ const IndividualCritterPage = (props) => {
       <p className="individual-critter-page__paragraph">{data?.['museum-phrase']}</p>
     </main>
   );
+};
+
+IndividualCritterPage.propTypes = {
+  type: PropTypes.string,
 };
 
 export default IndividualCritterPage;
