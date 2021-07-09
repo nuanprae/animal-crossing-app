@@ -9,9 +9,9 @@ import { sortAscendingOrder } from '../../utils';
 
 import './fish-page.css';
 
+import useSelectLanguage from '../../hooks/useSelectLanguage';
 import useSortByPrice from '../../hooks/useSortByPrice';
 import useSortByType from '../../hooks/useSortByType';
-import useSelectLanguage from '../../hooks/useSelectLanguage';
 import useQueryCritters from '../../hooks/useQueryCritters';
 
 const FishPage = () => {
