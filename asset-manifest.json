@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/animal-crossing-app/static/css/main.324d6df9.chunk.css",
-    "main.js": "/animal-crossing-app/static/js/main.c9440b5b.chunk.js",
-    "main.js.map": "/animal-crossing-app/static/js/main.c9440b5b.chunk.js.map",
+    "main.js": "/animal-crossing-app/static/js/main.4b24a943.chunk.js",
+    "main.js.map": "/animal-crossing-app/static/js/main.4b24a943.chunk.js.map",
     "runtime-main.js": "/animal-crossing-app/static/js/runtime-main.0c72a973.js",
     "runtime-main.js.map": "/animal-crossing-app/static/js/runtime-main.0c72a973.js.map",
     "static/js/2.edcee147.chunk.js": "/animal-crossing-app/static/js/2.edcee147.chunk.js",
@@ -21,6 +21,6 @@
     "static/js/runtime-main.0c72a973.js",
     "static/js/2.edcee147.chunk.js",
     "static/css/main.324d6df9.chunk.css",
-    "static/js/main.c9440b5b.chunk.js"
+    "static/js/main.4b24a943.chunk.js"
   ]
 }
