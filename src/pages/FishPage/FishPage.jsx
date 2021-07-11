@@ -15,9 +15,9 @@ import useSortByType from '../../hooks/useSortByType';
 import useQueryCritters from '../../hooks/useQueryCritters';
 
 const FishPage = () => {
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState(null);
   const [selectedLanguage, setSelectedLanguage] = useState('name-EUen');
-  const [types, setTypes] = useState([]);
+  const [types, setTypes] = useState(null);
 
   const { data, isLoading, isError } = useQueryCritters('https://acnhapi.com/v1/fish/', 'fish');
   const { handleSortByPrice, sortByPrice } = useSortByPrice(items, setItems);
@@ -47,9 +47,9 @@ const FishPage = () => {
   return (
     <main className="page-container">
       <FilterMenu
-        sortByPrice={handleSortByPrice}
-        sortByType={handleSortByType}
-        selectLanguage={handleSelectLanguage}
+        handleSortByPrice={handleSortByPrice}
+        handleSortByType={handleSortByType}
+        handleSelectLanguage={handleSelectLanguage}
         optgroup="Location"
         types={types}
       />

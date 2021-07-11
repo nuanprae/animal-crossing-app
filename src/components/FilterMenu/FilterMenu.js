@@ -4,17 +4,23 @@ import DropdownButton from '../../components/DropdownButton/DropdownButton';
 
 import './filter-menu.css';
 
-const FilterMenu = ({ optgroup, selectLanguage, sortByPrice, sortByType, types }) => {
+const FilterMenu = ({
+  handleSelectLanguage,
+  handleSortByPrice,
+  handleSortByType,
+  optgroup,
+  types,
+}) => {
   return (
     <section className="filter-menu">
       <DropdownButton
-        onChange={sortByPrice}
+        onChange={handleSortByPrice}
         optgroup="Sort by price"
         options={['Lowest price', 'Highest price']}
       />
-      <DropdownButton onChange={sortByType} optgroup={optgroup} options={types} />
+      <DropdownButton onChange={handleSortByType} optgroup={optgroup} options={types} />
       <DropdownButton
-        onChange={selectLanguage}
+        onChange={handleSelectLanguage}
         optgroup="Language"
         options={['English', 'Japanese']}
       />
@@ -23,10 +29,10 @@ const FilterMenu = ({ optgroup, selectLanguage, sortByPrice, sortByType, types }
 };
 
 FilterMenu.propTypes = {
+  handleSelectLanguage: PropTypes.func,
+  handleSortByPrice: PropTypes.func,
+  handleSortByType: PropTypes.func,
   optgroup: PropTypes.string,
-  selectLanguage: PropTypes.func,
-  sortByPrice: PropTypes.func,
-  sortByType: PropTypes.func,
   types: PropTypes.array,
 };
 export default FilterMenu;

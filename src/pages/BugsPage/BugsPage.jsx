@@ -14,9 +14,9 @@ import useSelectLanguage from '../../hooks/useSelectLanguage';
 import useQueryCritters from '../../hooks/useQueryCritters';
 
 const BugsPage = () => {
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState(null);
   const [selectedLanguage, setSelectedLanguage] = useState('name-EUen');
-  const [types, setTypes] = useState([]);
+  const [types, setTypes] = useState(null);
 
   const { data, isLoading, isError } = useQueryCritters('https://acnhapi.com/v1/bugs/', 'bugs');
   const { handleSelectLanguage } = useSelectLanguage(setSelectedLanguage);
@@ -50,9 +50,9 @@ const BugsPage = () => {
   return (
     <main className="page-container">
       <FilterMenu
-        sortByPrice={handleSortByPrice}
-        sortByType={handleSortByType}
-        selectLanguage={handleSelectLanguage}
+        handleSortByPrice={handleSortByPrice}
+        handleSortByType={handleSortByType}
+        handleSelectLanguage={handleSelectLanguage}
         optgroup="Rarity"
         types={types}
       />
