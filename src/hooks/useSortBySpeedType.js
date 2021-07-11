@@ -1,18 +1,18 @@
 import { sortAscendingOrder, sortDescendingOrder } from '../utils';
 
-const useSortBySpeedType = (state, setState, sortByPrice) => {
+const useSortBySpeedType = (data, setItems, sortByPrice) => {
   const handleSortBySpeedType = (event) => {
     if (event.target.value === 'All') {
-      setState(() => {
+      setItems(() => {
         if (sortByPrice === 'Highest price') {
-          return sortDescendingOrder(state, 'price');
+          return sortDescendingOrder(data, 'price');
         } else if (sortByPrice === 'Lowest price') {
-          return sortAscendingOrder(state, 'price');
+          return sortAscendingOrder(data, 'price');
         }
       });
     } else {
-      setState(() => {
-        const filtered = state.filter((obj) => obj.speed === event.target.value);
+      setItems(() => {
+        const filtered = data?.filter((obj) => obj.speed === event.target.value);
 
         if (sortByPrice === 'Highest price') {
           return sortDescendingOrder(filtered, 'price');
